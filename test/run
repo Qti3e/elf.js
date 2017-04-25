@@ -1,0 +1,5 @@
+cd ../lib
+rm elf.min.js
+./build.bash
+cd - &> /dev/null
+node test.js

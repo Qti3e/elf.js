@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"> <![endif]-->
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html style="" class=" js no-touch csstransforms3d csstransitions"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- Basic -->
+<meta charset="utf-8">
+<title>Assembly Variables</title>
+<meta name="description" content="Assembly Variables - Learning assembly programming language in simple and easy steps using this beginner's tutorial containing basic to advanced knowledge starting from Environment Setup, Status Register, Arithmetic Instructions, Conditional Execution, Loop Instructions, Logical Instructions, String Processing, Recursion, Arrays, Procedures, Constants, Macros and File Management.">
+<meta name="keywords" content="Assembly, Programming, Language, Tutorials, Learning, Beginners, Basics, Environment Setup, Status Register, Arithmetic Instructions, Conditional Execution, Loop Instructions, Logical Instructions, String Processing, Recursion, Arrays, Procedures, Constants, Macros, File Management.">
+<!-- base href="https://www.tutorialspoint.com/" -->
+<link rel="shortcut icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="fb:app_id" content="471319149685276">
+<meta property="og:site_name" content="www.tutorialspoint.com">
+<meta name="robots" content="index, follow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script src="Assembly%20Variables_files/ca-pub-7133395778201029.js"></script><script type="text/javascript" src="Assembly%20Variables_files/script-min-v4.js"></script>
+<link rel="stylesheet" href="Assembly%20Variables_files/style-min.css">
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+pre.prettyprint.tryit {min-height:37px; background: #eee url(assembly_programming/images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #113b6a url(/images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #113b6a !important;}
+.submenu-item{ border-bottom: 2px solid #113b6a !important; border-top: 2px solid #113b6a !important }
+</style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+</head>
+<body onload="prettyPrint()">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img src="Assembly%20Variables_files/loading-cg.gif" alt="" width="70" height="70">
+   </div>
+</div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="https://www.tutorialspoint.com/index.htm" title="tutorialspoint">
+      <img alt="tutorialspoint" src="Assembly%20Variables_files/logo.png">
+      </a>
+      </h1>			
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="https://www.tutorialspoint.com/about/about_careers.htm" style="background: #fffb09; font-weight: bold;"><i class="icon icon-suitcase"></i> Jobs</a></li>
+            <li> <a href="http://www.sendfiles.net/"><i class="fa fa-send"></i> &nbsp;SENDfiles</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/whiteboard.htm"><img src="Assembly%20Variables_files/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/netmeeting.php"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/online_dev_tools.htm"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="https://www.tutorialspoint.com/articles/index.php"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+         <!-- search code here  --> 
+      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+   </div>
+  
+   <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="https://www.tutorialspoint.com/index.htm"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown" id="liTL"><a class="dropdown" href="javascript:void(0);"><span class="tut-lib"> Tutorials Library <i class="fa-caret-down"></i></span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/codingground.htm"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/tutor_connect/index.php"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/videotutorials/index.htm"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == 'Search your favorite tutorials...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search your favorite tutorials...';}" autocomplete="off" type="text">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+         <div class="submenu-item sub-main-menu" id="top-sub-menu"></div>
+         
+      </div>
+   </div>	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="Assembly%20Variables_files/assembly-mini-logo.jpg" alt="Assembly Programming Tutorial">
+</div>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Assembly Tutorial</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/index.htm">Assembly - Home</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_introduction.htm">Assembly - Introduction</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_environment_setup.htm">Assembly - Environment Setup</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_basic_syntax.htm">Assembly - Basic Syntax</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_memory_segments.htm">Assembly - Memory Segments</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_registers.htm">Assembly - Registers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_system_calls.htm">Assembly - System Calls</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_addressing_modes.htm">Assembly - Addressing Modes</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_variables.htm" style="background-color: rgb(214, 214, 214);">Assembly - Variables</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_constants.htm">Assembly - Constants</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_arithmetic_instructions.htm">Assembly - Arithmetic Instructions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_logical_instructions.htm">Assembly - Logical Instructions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_conditions.htm">Assembly - Conditions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_loops.htm">Assembly - Loops</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_numbers.htm">Assembly - Numbers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_strings.htm">Assembly - Strings</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_arrays.htm">Assembly - Arrays</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_procedures.htm">Assembly - Procedures</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_recursion.htm">Assembly - Recursion</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_macros.htm">Assembly - Macros</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_file_management.htm">Assembly - File Management</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_memory_management.htm">Assembly - Memory Management</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Assembly Useful Resources</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_quick_guide.htm">Assembly - Quick Guide</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_useful_resources.htm">Assembly - Useful Resources</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_discussion.htm">Assembly - Discussion</a></li>
+</ul>
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+</aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-7 middle-col">
+<h1>Assembly - Variables</h1>
+<div class="topgooglead">
+<hr>
+<div style="padding-bottom:5px;padding-left:10px;">Advertisements</div>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "image";
+google_ad_channel = "";
+//--></script>
+<script type="text/javascript" src="Assembly%20Variables_files/show_ads.js"> 
+</script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" width="468" height="60" frameborder="0"></iframe></ins></ins>
+</div>
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/assembly_addressing_modes.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/assembly_constants.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr>
+<p>NASM provides various <b>define directives</b> for reserving storage 
+space for variables. The define assembler directive is used for 
+allocation of storage space. It can be used to reserve as well as 
+initialize one or more bytes.</p>
+<h2>Allocating Storage Space for Initialized Data</h2>
+<p>The syntax for storage allocation statement for initialized data is −</p>
+<pre class="result notranslate">[variable-name]    define-directive    initial-value   [,initial-value]...
+</pre>
+<p>Where, <i>variable-name</i> is the identifier for each storage space.
+ The assembler associates an offset value for each variable name defined
+ in the data segment.</p>
+<p>There are five basic forms of the define directive −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Directive</th>
+<th>Purpose</th>
+<th>Storage Space</th>
+</tr>
+<tr>
+<td>DB</td>
+<td>Define Byte</td>
+<td>allocates 1 byte</td>
+</tr>
+<tr>
+<td>DW</td>
+<td>Define Word</td>
+<td>allocates 2 bytes</td>
+</tr>
+<tr>
+<td>DD</td>
+<td>Define Doubleword</td>
+<td>allocates 4 bytes</td>
+</tr>
+<tr>
+<td>DQ</td>
+<td>Define Quadword</td>
+<td>allocates 8 bytes</td>
+</tr>
+<tr>
+<td>DT</td>
+<td>Define Ten Bytes</td>
+<td>allocates 10 bytes</td>
+</tr>
+</tbody></table>
+<p>Following are some examples of using define directives −</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="pln">choice		DB	</span><span class="str">'y'</span><span class="pln">
+number		DW	</span><span class="lit">12345</span><span class="pln">
+neg_number	DW	</span><span class="pun">-</span><span class="lit">12345</span><span class="pln">
+big_number	DQ	</span><span class="lit">123456789</span><span class="pln">
+real_number1	DD	</span><span class="lit">1.234</span><span class="pln">
+real_number2	DQ	</span><span class="lit">123.456</span></pre>
+<p>Please note that −</p>
+<ul class="list">
+<li><p>Each byte of character is stored as its ASCII value in hexadecimal.</p></li>
+<li><p>Each decimal value is automatically converted to its 16-bit binary equivalent and stored as a hexadecimal number.</p></li>
+<li><p>Processor uses the little-endian byte ordering.</p></li>
+<li><p>Negative numbers are converted to its 2's complement representation. </p></li>
+<li><p>Short and long floating-point numbers are represented using 32 or 64 bits, respectively.</p></li>
+</ul>
+<p>The following program shows the use of define directive −</p>
+<pre class="prettyprint notranslate tryit prettyprinted" style=""><span class="pln">section </span><span class="pun">.</span><span class="pln">text
+   </span><span class="kwd">global</span><span class="pln"> _start          </span><span class="pun">;</span><span class="pln">must be declared </span><span class="kwd">for</span><span class="pln"> linker </span><span class="pun">(</span><span class="pln">gcc</span><span class="pun">)</span><span class="pln">
+	
+_start</span><span class="pun">:</span><span class="pln">                   </span><span class="pun">;</span><span class="pln">tell linker entry point
+   mov	edx</span><span class="pun">,</span><span class="lit">1</span><span class="pln">		  </span><span class="pun">;</span><span class="pln">message length
+   mov	ecx</span><span class="pun">,</span><span class="pln">choice        </span><span class="pun">;</span><span class="pln">message to write
+   mov	ebx</span><span class="pun">,</span><span class="lit">1</span><span class="pln">		  </span><span class="pun">;</span><span class="pln">file descriptor </span><span class="pun">(</span><span class="pln">stdout</span><span class="pun">)</span><span class="pln">
+   mov	eax</span><span class="pun">,</span><span class="lit">4</span><span class="pln">		  </span><span class="pun">;</span><span class="pln">system call number </span><span class="pun">(</span><span class="pln">sys_write</span><span class="pun">)</span><span class="pln">
+   </span><span class="kwd">int</span><span class="pln">	</span><span class="lit">0x80</span><span class="pln">		  </span><span class="pun">;</span><span class="pln">call kernel
+
+   mov	eax</span><span class="pun">,</span><span class="lit">1</span><span class="pln">		  </span><span class="pun">;</span><span class="pln">system call number </span><span class="pun">(</span><span class="pln">sys_exit</span><span class="pun">)</span><span class="pln">
+   </span><span class="kwd">int</span><span class="pln">	</span><span class="lit">0x80</span><span class="pln">		  </span><span class="pun">;</span><span class="pln">call kernel
+
+section </span><span class="pun">.</span><span class="pln">data
+choice DB </span><span class="str">'y'</span></pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">y
+</pre>
+<h2>Allocating Storage Space for Uninitialized Data</h2>
+<p>The reserve directives are used for reserving space for uninitialized
+ data. The reserve directives take a single operand that specifies the 
+number of units of space to be reserved. Each define directive has a 
+related reserve directive.</p>
+<p>There are five basic forms of the reserve directive −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Directive</th>
+<th>Purpose</th>
+</tr>
+<tr>
+<td>RESB</td>
+<td>Reserve a Byte</td>
+</tr>
+<tr>
+<td>RESW</td>
+<td>Reserve a Word</td>
+</tr>
+<tr>
+<td>RESD</td>
+<td>Reserve a Doubleword</td>
+</tr>
+<tr>
+<td>RESQ</td>
+<td>Reserve a Quadword</td>
+</tr>
+<tr>
+<td>REST</td>
+<td>Reserve a Ten Bytes</td>
+</tr>
+</tbody></table>
+<h2>Multiple Definitions</h2>
+<p>You can have multiple data definition statements in a program. For example −</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="pln">choice	  DB 	</span><span class="str">'Y'</span><span class="pln"> 		 </span><span class="pun">;</span><span class="pln">ASCII of y </span><span class="pun">=</span><span class="pln"> </span><span class="lit">79H</span><span class="pln">
+number1	  DW 	</span><span class="lit">12345</span><span class="pln"> 	 </span><span class="pun">;</span><span class="lit">12345D</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="lit">3039H</span><span class="pln">
+number2    DD  </span><span class="lit">12345679</span><span class="pln">  </span><span class="pun">;</span><span class="lit">123456789D</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="lit">75BCD15H</span></pre>
+<p>The assembler allocates contiguous memory for multiple variable definitions.</p>
+<h2>Multiple Initializations</h2>
+<p>The TIMES directive allows multiple initializations to the same 
+value. For example, an array named marks of size 9 can be defined and 
+initialized to zero using the following statement −</p>
+<pre class="result notranslate">marks  TIMES  9  DW  0
+</pre>
+<p>The TIMES directive is useful in defining arrays and tables. The following program displays 9 asterisks on the screen −</p>
+<pre class="prettyprint notranslate tryit prettyprinted" style=""><span class="pln">section	</span><span class="pun">.</span><span class="pln">text
+   </span><span class="kwd">global</span><span class="pln"> _start        </span><span class="pun">;</span><span class="pln">must be declared </span><span class="kwd">for</span><span class="pln"> linker </span><span class="pun">(</span><span class="pln">ld</span><span class="pun">)</span><span class="pln">
+	
+_start</span><span class="pun">:</span><span class="pln">                 </span><span class="pun">;</span><span class="pln">tell linker entry point
+   mov	edx</span><span class="pun">,</span><span class="lit">9</span><span class="pln">		</span><span class="pun">;</span><span class="pln">message length
+   mov	ecx</span><span class="pun">,</span><span class="pln"> stars	</span><span class="pun">;</span><span class="pln">message to write
+   mov	ebx</span><span class="pun">,</span><span class="lit">1</span><span class="pln">		</span><span class="pun">;</span><span class="pln">file descriptor </span><span class="pun">(</span><span class="pln">stdout</span><span class="pun">)</span><span class="pln">
+   mov	eax</span><span class="pun">,</span><span class="lit">4</span><span class="pln">		</span><span class="pun">;</span><span class="pln">system call number </span><span class="pun">(</span><span class="pln">sys_write</span><span class="pun">)</span><span class="pln">
+   </span><span class="kwd">int</span><span class="pln">	</span><span class="lit">0x80</span><span class="pln">		</span><span class="pun">;</span><span class="pln">call kernel
+
+   mov	eax</span><span class="pun">,</span><span class="lit">1</span><span class="pln">		</span><span class="pun">;</span><span class="pln">system call number </span><span class="pun">(</span><span class="pln">sys_exit</span><span class="pun">)</span><span class="pln">
+   </span><span class="kwd">int</span><span class="pln">	</span><span class="lit">0x80</span><span class="pln">		</span><span class="pun">;</span><span class="pln">call kernel
+
+section	</span><span class="pun">.</span><span class="pln">data
+stars   times </span><span class="lit">9</span><span class="pln"> db </span><span class="str">'*'</span></pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">*********
+</pre>
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/assembly_addressing_modes.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="https://www.tutorialspoint.com/cgi-bin/printpage.cgi" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="pdf-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/pdf/assembly_variables.pdf" title="Assembly Variables" target="_blank"><i class="icon icon-file-pdf-o big-font"></i> PDF</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/assembly_constants.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr>
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+<script type="text/javascript"><!--
+var width = 580;
+var height = 400;
+var format = "580x400_as";
+if( window.innerWidth < 468 ){
+   width = 300;
+   height = 250;
+   format = "300x250_as";
+}
+google_ad_client = "pub-7133395778201029";
+google_ad_width = width;
+google_ad_height = height;
+google_ad_format = format;
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="Assembly%20Variables_files/show_ads.js">
+</script><ins id="aswift_1_expand" style="display:inline-table;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:580px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:580px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" width="580" height="400" frameborder="0"></iframe></ins></ins>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="simple-ad">
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.facebook.com/sharer.php?u=' + 'http://www.tutorialspoint.com/assembly_programming/assembly_variables.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Variables_files/facebookIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://twitter.com/share?url=' + 'http://www.tutorialspoint.com/assembly_programming/assembly_variables.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Variables_files/twitterIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.linkedin.com/cws/share?url=' + 'http://www.tutorialspoint.com/assembly_programming/assembly_variables.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Variables_files/linkedinIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://plus.google.com/share?url=http://www.tutorialspoint.com/assembly_programming/assembly_variables.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Variables_files/googlePlusIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.stumbleupon.com/submit?url=http://www.tutorialspoint.com/assembly_programming/assembly_variables.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Variables_files/StumbleUponIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://reddit.com/submit?url=http://www.tutorialspoint.com/assembly_programming/assembly_variables.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=656,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Variables_files/reddit.jpg" alt="img">
+</a>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="Assembly%20Variables_files/show_ads.js">
+</script><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;" width="300" height="250" frameborder="0"></iframe></ins></ins>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 600;
+google_ad_format = "300x600_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="Assembly%20Variables_files/show_ads.js">
+</script><ins id="aswift_3_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_3_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;" width="300" height="600" frameborder="0"></iframe></ins></ins>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2537027957187252";
+/* Right Side Ad */
+google_ad_slot = "right_side_ad";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="Assembly%20Variables_files/show_ads.js">
+</script><ins id="aswift_4_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_4_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_4" name="aswift_4" style="left:0;position:absolute;top:0;" width="300" height="250" frameborder="0"></iframe></ins></ins>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="https://www.tutorialspoint.com/index.htm" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="Assembly%20Variables_files/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="https://www.tutorialspoint.com/about/tutorials_writing.htm">Write for us</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/faq.htm">FAQ's</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/about_helping.htm">Helping</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/contact_us.htm">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>© Copyright 2016. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == 'Enter email for newsletter...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter email for newsletter...';}" type="text">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<script type="text/javascript" src="Assembly%20Variables_files/custom-min.js"></script><a class="scroll-to-top" href="#" id="scrollToTop"><i class="icon icon-chevron-up icon-white"></i></a>
+<script src="Assembly%20Variables_files/urchin.js">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+<script type="text/javascript" src="Assembly%20Variables_files/jquery.js"></script>
+<script type="text/javascript">
+   var tryit = new $.TryIt('assembly_programming/try_asm.php');
+   tryit.compile();
+</script><div id="source" style="display:none;"></div><div id="supportsource" style="display:none;"></div><div id="utilsource" style="display:none;"></div><div id="extrasource" style="display:none;"></div><div id="inputs" style="display:none;"></div><div id="filename" style="display:none;"></div>
+
+
+<div class="autocomplete-suggestions "></div><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div></body></html>

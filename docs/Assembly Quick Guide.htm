@@ -1,0 +1,3518 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"> <![endif]-->
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html style="" class=" js no-touch csstransforms3d csstransitions"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- Basic -->
+<meta charset="utf-8">
+<title>Assembly Quick Guide</title>
+<meta name="description" content="Assembly Quick Guide - Learning assembly programming language in simple and easy steps using this beginner's tutorial containing basic to advanced knowledge starting from Environment Setup, Status Register, Arithmetic Instructions, Conditional Execution, Loop Instructions, Logical Instructions, String Processing, Recursion, Arrays, Procedures, Constants, Macros and File Management.">
+<meta name="keywords" content="Assembly, Programming, Language, Tutorials, Learning, Beginners, Basics, Environment Setup, Status Register, Arithmetic Instructions, Conditional Execution, Loop Instructions, Logical Instructions, String Processing, Recursion, Arrays, Procedures, Constants, Macros, File Management.">
+<!-- base href="https://www.tutorialspoint.com/" -->
+<link rel="shortcut icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="fb:app_id" content="471319149685276">
+<meta property="og:site_name" content="www.tutorialspoint.com">
+<meta name="robots" content="index, follow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script src="Assembly%20Quick%20Guide_files/ca-pub-7133395778201029.js"></script><script type="text/javascript" src="Assembly%20Quick%20Guide_files/script-min-v4.js"></script>
+<link rel="stylesheet" href="Assembly%20Quick%20Guide_files/style-min.css">
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+pre.prettyprint.tryit {min-height:37px; background: #eee url(assembly_programming/images/try-it.jpg) top right no-repeat !important}select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #113b6a url(/images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #113b6a !important;}
+.submenu-item{ border-bottom: 2px solid #113b6a !important; border-top: 2px solid #113b6a !important }
+</style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+</head>
+<body onload="prettyPrint()">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img src="Assembly%20Quick%20Guide_files/loading-cg.gif" alt="" width="70" height="70">
+   </div>
+</div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="https://www.tutorialspoint.com/index.htm" title="tutorialspoint">
+      <img alt="tutorialspoint" src="Assembly%20Quick%20Guide_files/logo.png">
+      </a>
+      </h1>			
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="https://www.tutorialspoint.com/about/about_careers.htm" style="background: #fffb09; font-weight: bold;"><i class="icon icon-suitcase"></i> Jobs</a></li>
+            <li> <a href="http://www.sendfiles.net/"><i class="fa fa-send"></i> &nbsp;SENDfiles</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/whiteboard.htm"><img src="Assembly%20Quick%20Guide_files/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/netmeeting.php"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/online_dev_tools.htm"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="https://www.tutorialspoint.com/articles/index.php"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+         <!-- search code here  --> 
+      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+   </div>
+  
+   <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="https://www.tutorialspoint.com/index.htm"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown" id="liTL"><a class="dropdown" href="javascript:void(0);"><span class="tut-lib"> Tutorials Library <i class="fa-caret-down"></i></span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/codingground.htm"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/tutor_connect/index.php"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/videotutorials/index.htm"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == 'Search your favorite tutorials...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search your favorite tutorials...';}" autocomplete="off" type="text">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+         <div class="submenu-item sub-main-menu" id="top-sub-menu"></div>
+         
+      </div>
+   </div>	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="Assembly%20Quick%20Guide_files/assembly-mini-logo.jpg" alt="Assembly Programming Tutorial">
+</div>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Assembly Tutorial</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/index.htm">Assembly - Home</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_introduction.htm">Assembly - Introduction</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_environment_setup.htm">Assembly - Environment Setup</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_basic_syntax.htm">Assembly - Basic Syntax</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_memory_segments.htm">Assembly - Memory Segments</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_registers.htm">Assembly - Registers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_system_calls.htm">Assembly - System Calls</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_addressing_modes.htm">Assembly - Addressing Modes</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_variables.htm">Assembly - Variables</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_constants.htm">Assembly - Constants</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_arithmetic_instructions.htm">Assembly - Arithmetic Instructions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_logical_instructions.htm">Assembly - Logical Instructions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_conditions.htm">Assembly - Conditions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_loops.htm">Assembly - Loops</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_numbers.htm">Assembly - Numbers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_strings.htm">Assembly - Strings</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_arrays.htm">Assembly - Arrays</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_procedures.htm">Assembly - Procedures</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_recursion.htm">Assembly - Recursion</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_macros.htm">Assembly - Macros</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_file_management.htm">Assembly - File Management</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_memory_management.htm">Assembly - Memory Management</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Assembly Useful Resources</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_quick_guide.htm" style="background-color: rgb(214, 214, 214);">Assembly - Quick Guide</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_useful_resources.htm">Assembly - Useful Resources</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/assembly_programming/assembly_discussion.htm">Assembly - Discussion</a></li>
+</ul>
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+</aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-7 middle-col">
+<h1>Assembly - Quick Guide</h1>
+<div class="topgooglead">
+<hr>
+<div style="padding-bottom:5px;padding-left:10px;">Advertisements</div>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "image";
+google_ad_channel = "";
+//--></script>
+<script type="text/javascript" src="Assembly%20Quick%20Guide_files/show_ads.js"> 
+</script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" width="468" height="60" frameborder="0"></iframe></ins></ins>
+</div>
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/assembly_memory_management.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/assembly_useful_resources.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr>
+<h1>Assembly - Introduction</h1>
+<h2>What is Assembly Language?</h2>
+<p>Each personal computer has a microprocessor that manages the computer's arithmetical, logical, and control activities.</p>
+<p>Each family of processors has its own set of instructions for 
+handling various operations such as getting input from keyboard, 
+displaying information on screen and performing various other jobs. 
+These set of instructions are called 'machine language instructions'.</p>
+<p>A processor understands only machine language instructions, which are
+ strings of 1's and 0's. However, machine language is too obscure and 
+complex for using in software development. So, the low-level assembly 
+language is designed for a specific family of processors that represents
+ various instructions in symbolic code and a more understandable form.</p>
+<h2>Advantages of Assembly Language</h2>
+<p>Having an understanding of assembly language makes one aware of −</p>
+<ul class="list">
+<li>How programs interface with OS, processor, and BIOS;</li>
+<li>How data is represented in memory and other external devices;</li>
+<li>How the processor accesses and executes instruction;</li>
+<li>How instructions access and process data;</li>
+<li>How a program accesses external devices.</li>
+</ul>
+<p>Other advantages of using assembly language are −</p>
+<ul class="list">
+<li><p>It requires less memory and execution time;</p></li>
+<li><p>It allows hardware-specific complex jobs in an easier way;</p></li>
+<li><p>It is suitable for time-critical jobs;</p></li>
+<li><p>It is most suitable for writing interrupt service routines and other memory resident programs.</p></li>
+</ul>
+<h2>Basic Features of PC Hardware</h2>
+<p>The main internal hardware of a PC consists of processor, memory, and
+ registers. Registers are processor components that hold data and 
+address. To execute a program, the system copies it from the external 
+device into the internal memory. The processor executes the program 
+instructions.</p>
+<p>The fundamental unit of computer storage is a bit; it could be ON (1)
+ or OFF (0). A group of nine related bits makes a byte, out of which 
+eight bits are used for data and the last one is used for parity. 
+According to the rule of parity, the number of bits that are ON (1) in 
+each byte should always be odd.</p>
+<p>So, the parity bit is used to make the number of bits in a byte odd. 
+If the parity is even, the system assumes that there had been a parity 
+error (though rare), which might have been caused due to hardware fault 
+or electrical disturbance.</p>
+<p>The processor supports the following data sizes −</p>
+<ul class="list">
+<li>Word: a 2-byte data item</li>
+<li>Doubleword: a 4-byte (32 bit) data item</li>
+<li>Quadword: an 8-byte (64 bit) data item</li>
+<li>Paragraph: a 16-byte (128 bit) area</li>
+<li>Kilobyte: 1024 bytes</li>
+<li>Megabyte: 1,048,576 bytes</li>
+</ul>
+<h2>Binary Number System</h2>
+<p>Every number system uses positional notation, i.e., each position in 
+which a digit is written has a different positional value. Each position
+ is power of the base, which is 2 for binary number system, and these 
+powers begin at 0 and increase by 1.</p>
+<p>The following table shows the positional values for an 8-bit binary number, where all bits are set ON.</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width:43%;">Bit value</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<th style="width:45%;">Position value as a power of base 2</th>
+<td>128</td>
+<td>64</td>
+<td>32</td>
+<td>16</td>
+<td>8</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<th style="width:25%;">Bit number</th>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>The value of a binary number is based on the presence of 1 bits and 
+their positional value. So, the value of a given binary number is −</p>
+<p>1 + 2 + 4 + 8 +16 + 32 + 64 + 128 = 255</p>
+<p>which is same as 2<sup>8</sup> - 1.</p>
+<h2>Hexadecimal Number System</h2>
+<p>Hexadecimal number system uses base 16. The digits in this system 
+range from 0 to 15. By convention, the letters A through F is used to 
+represent the hexadecimal digits corresponding to decimal values 10 
+through 15.</p>
+<p>Hexadecimal numbers in computing is used for abbreviating lengthy 
+binary representations. Basically, hexadecimal number system represents a
+ binary data by dividing each byte in half and expressing the value of 
+each half-byte. The following table provides the decimal, binary, and 
+hexadecimal equivalents −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Decimal number</th>
+<th>Binary representation</th>
+<th>Hexadecimal representation</th>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>100</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>101</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>110</td>
+<td>6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>111</td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1000</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1001</td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1010</td>
+<td>A</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1011</td>
+<td>B</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1100</td>
+<td>C</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1101</td>
+<td>D</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1110</td>
+<td>E</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1111</td>
+<td>F</td>
+</tr>
+</tbody></table>
+<p>To convert a binary number to its hexadecimal equivalent, break it 
+into groups of 4 consecutive groups each, starting from the right, and 
+write those groups over the corresponding digits of the hexadecimal 
+number.</p>
+<p><b>Example</b> − Binary number 1000 1100 1101 0001 is equivalent to hexadecimal - 8CD1</p>
+<p>To convert a hexadecimal number to binary, just write each hexadecimal digit into its 4-digit binary equivalent.</p>
+<p><b>Example</b> − Hexadecimal number FAD8 is equivalent to binary - 1111   1010 1101 1000</p>
+<h2>Binary Arithmetic</h2>
+<p>The following table illustrates four simple rules for binary addition −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>(i)</th>
+<th>(ii)</th>
+<th>(iii)</th>
+<th>(iv)</th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>+0</td>
+<td>+0</td>
+<td>+1</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>=0</td>
+<td>=1</td>
+<td>=10</td>
+<td>=11</td>
+</tr>
+</tbody></table>
+<p>Rules (iii) and (iv) show a carry of a 1-bit into the next left position.</p>
+<p><b>Example</b></p>
+<table class="table table-bordered">
+<tbody><tr>
+<th width="50%">Decimal</th>
+<th>Binary</th>
+</tr>
+<tr>
+<td>60</td>
+<td>00111100</td>
+</tr>
+<tr>
+<td>+42</td>
+<td>00101010</td>
+</tr>
+<tr>
+<td>102</td>
+<td>01100110</td>
+</tr>
+</tbody></table>
+<p>A negative binary value is expressed in <b>two's complement notation</b>. According to this rule, to convert a binary number to its negative value is to <i>reverse its bit values and add 1</i>.</p>
+<p><b>Example</b></p>
+<table class="table table-bordered">
+<tbody><tr>
+<td width="50%">Number 53</td>
+<td>00110101</td>
+</tr>
+<tr>
+<td>Reverse the bits</td>
+<td>11001010</td>
+</tr>
+<tr>
+<td>Add 1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Number -53</td>
+<td>11001011</td>
+</tr>
+</tbody></table>
+<p>To subtract one value from another, <i>convert the number being subtracted to two's complement format and add the numbers</i>.</p>
+<p><b>Example</b></p>
+<p>Subtract 42 from 53</p>
+<table class="table table-bordered">
+<tbody><tr>
+<td width="50%">Number 53</td>
+<td>00110101</td>
+</tr>
+<tr>
+<td>Number 42</td>
+<td>00101010</td>
+</tr>
+<tr>
+<td>Reverse the bits of 42</td>
+<td>11010101</td>
+</tr>
+<tr>
+<td>Add 1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Number -42</td>
+<td>11010110</td>
+</tr>
+<tr>
+<td>53 - 42 = 11</td>
+<td>00001011</td>
+</tr>
+</tbody></table>
+<p>Overflow of the last 1 bit is lost.</p>
+<h2>Addressing Data in Memory</h2>
+<p>The process through which the processor controls the execution of instructions is referred as the <b>fetch-decode-execute cycle</b> or the <b>execution cycle</b>. It consists of three continuous steps −</p>
+<ul class="list">
+<li>Fetching the instruction from memory</li>
+<li>Decoding or identifying the instruction</li>
+<li>Executing the instruction</li>
+</ul>
+<p>The processor may access one or more bytes of memory at a time. Let 
+us consider a hexadecimal number 0725H. This number will require two 
+bytes of memory. The high-order byte or most significant byte is 07 and 
+the low-order byte is 25.</p>
+<p>The processor stores data in reverse-byte sequence, i.e., a low-order
+ byte is stored in a low memory address and a high-order byte in high 
+memory address. So, if the processor brings the value 0725H from 
+register to memory, it will transfer 25 first to the lower memory 
+address and 07 to the next memory address.</p>
+<img src="Assembly%20Quick%20Guide_files/introduction1.jpg" alt="Introduction">
+<p style="text-align:center;">x: memory address</p>
+<p>When the processor gets the numeric data from memory to register, it 
+again reverses the bytes. There are two kinds of memory addresses −</p>
+<ul class="list">
+<li><p>Absolute address - a direct reference of specific location.</p></li>
+<li><p>Segment address (or offset) - starting address of a memory segment with the offset value.</p></li>
+</ul>
+<h1>Assembly - Environment Setup</h1>
+<blockquote>
+<h2>Try it Option Online</h2>
+<p>We already have set up NASM assembler to experiment with Assembly 
+programming online, so that you can execute all the available examples 
+online at the same time when you are doing your theory work. This gives 
+you confidence in what you are reading and to check the result with 
+different options. Feel free to modify any example and execute it 
+online.</p>
+<p>Try the following example using our online compiler option available at <a href="http://www.compileonline.com/" target="_blank">http://www.compileonline.com/</a></p></blockquote>
+<pre class="prettyprint notranslate tryit">section	.text
+   global_start   ;must be declared for linker (ld)
+	
+_start:	          ;tells linker entry point
+   mov	edx,len   ;message length
+   mov	ecx,msg   ;message to write
+   mov	ebx,1     ;file descriptor (stdout)
+   mov	eax,4     ;system call number (sys_write)
+   int	0x80      ;call kernel
+	
+   mov	eax,1     ;system call number (sys_exit)
+   int	0x80      ;call kernel
+
+section	.data
+msg db 'Hello, world!', 0xa  ;our dear string
+len equ $ - msg    ;length of our dear string
+</pre>
+<blockquote><p>For most of the examples given in this tutorial, you will find a <b>Try it</b>
+ option in our website code sections at the top right corner, that will 
+take you to the online compiler. So just make use of it and enjoy your 
+learning.</p>
+</blockquote>
+<h2>Local Environment Setup</h2>
+<p>Assembly language is dependent upon the instruction set and the 
+architecture of the processor. In this tutorial, we focus on Intel 32 
+processors like Pentium. To follow this tutorial, you will need −</p>
+<ul class="list">
+<li>An IBM PC or any equivalent compatible computer</li>
+<li>A copy of Linux operating system</li>
+<li>A copy of NASM assembler program</li>
+</ul>
+<p>There are many good assembler programs, such as −</p>
+<ul class="list">
+<li>Microsoft Assembler (MASM)</li>
+<li>Borland Turbo Assembler (TASM)</li>
+<li>The GNU assembler (GAS)</li>
+</ul>
+<p>We will use the NASM assembler, as it is −</p>
+<ul class="list">
+<li>Free. You can download it from various web sources.</li>
+<li>Well documented and you will get lots of information on net.</li>
+<li>Could be used on both Linux and Windows.</li>
+</ul>
+<h2>Installing NASM</h2>
+<p>If you select "Development Tools" while installing Linux, you may get
+ NASM installed along with the Linux operating system and you do not 
+need to download and install it separately. For checking whether you 
+already have NASM installed, take the following steps −</p>
+<ul class="list">
+<li><p>Open a Linux terminal.</p></li>
+<li><p>Type <b>whereis nasm</b> and press ENTER.</p></li>
+<li><p>If it is already installed, then a line like, <i>nasm: /usr/bin/nasm</i> appears. Otherwise, you will see just <i>nasm:</i>, then you need to install NASM.</p></li>
+</ul>
+<p>To install NASM, take the following steps −</p>
+<ul class="list">
+<li><p>Check <a href="http://www.nasm.us/" target="_blank" rel="nofollow">The netwide assembler (NASM)</a> website for the latest version.</p></li>
+<li><p>Download the Linux source archive nasm-X.XX.ta.gz, where X.XX is the NASM version number in the archive.</p></li>
+<li><p>Unpack the archive into a directory which creates a subdirectory nasm-X. XX.</p></li>
+<li><p>cd to <i>nasm-X. XX</i> and type <b>./configure</b>. This shell script will find the best C compiler to use and set up Makefiles accordingly.</p></li>
+<li><p>Type <b>make</b> to build the nasm and ndisasm binaries.</p></li>
+<li><p>Type <b>make install</b> to install nasm and ndisasm in /usr/local/bin and to install the man pages.</p></li>
+</ul>
+<p>This should install NASM on your system. Alternatively, you can use 
+an RPM distribution for the Fedora Linux. This version is simpler to 
+install, just double-click the RPM file.</p>
+<h1>Assembly - Basic Syntax</h1>
+<p>An assembly program can be divided into three sections −</p>
+<ul class="list">
+<li><p>The <b>data</b> section,</p></li>
+<li><p>The <b>bss</b> section, and</p></li>
+<li><p>The <b>text</b> section.</p></li>
+</ul>
+<h2>The <i>data</i> Section</h2>
+<p>The <b>data</b> section is used for declaring initialized data or 
+constants. This data does not change at runtime. You can declare various
+ constant values, file names, or buffer size, etc., in this section.</p>
+<p>The syntax for declaring data section is −</p>
+<pre class="result notranslate">section.data
+</pre>
+<h2>The <i>bss</i> Section</h2>
+<p>The <b>bss</b> section is used for declaring variables. The syntax for declaring bss section is −</p>
+<pre class="result notranslate">section.bss
+</pre>
+<h2>The <i>text</i> section</h2>
+<p>The <b>text</b> section is used for keeping the actual code. This section must begin with the declaration <b>global _start</b>, which tells the kernel where the program execution begins.</p>
+<p>The syntax for declaring text section is −</p>
+<pre class="result notranslate">section.text
+   global _start
+_start:
+</pre>
+<h2>Comments</h2>
+<p>Assembly language comment begins with a semicolon (;). It may contain
+ any printable character including blank. It can appear on a line by 
+itself, like −</p>
+<pre class="result notranslate">; This program displays a message on screen
+</pre>
+<p>or, on the same line along with an instruction, like −</p>
+<pre class="prettyprint notranslate">add eax ,ebx  ; adds ebx to eax
+</pre>
+<h2>Assembly Language Statements</h2>
+<p>Assembly language programs consist of three types of statements −</p>
+<ul class="list">
+<li>Executable instructions or instructions,</li>
+<li>Assembler directives or pseudo-ops, and</li>
+<li>Macros.</li>
+</ul>
+<p>The <b>executable instructions</b> or simply <b>instructions</b> tell the processor what to do. Each instruction consists of an <b>operation code</b> (opcode). Each executable instruction generates one machine language instruction. </p>
+<p>The <b>assembler directives</b> or <b>pseudo-ops</b> tell the 
+assembler about the various aspects of the assembly process. These are 
+non-executable and do not generate machine language instructions.</p>
+<p><b>Macros</b> are basically a text substitution mechanism.</p>
+<h3>Syntax of Assembly Language Statements</h3>
+<p>Assembly language statements are entered one statement per line. Each statement follows the following format −</p>
+<pre class="result notranslate">[label]   mnemonic   [operands]   [;comment]
+</pre>
+<p>The fields in the square brackets are optional. A basic instruction 
+has two parts, the first one is the name of the instruction (or the 
+mnemonic), which is to be executed, and the second are the operands or 
+the parameters of the command. </p>
+<p>Following are some examples of typical assembly language statements −</p>
+<pre class="result notranslate">INC COUNT        ; Increment the memory variable COUNT
+
+MOV TOTAL, 48    ; Transfer the value 48 in the 
+                 ; memory variable TOTAL
+					  
+ADD AH, BH       ; Add the content of the 
+                 ; BH register into the AH register
+					  
+AND MASK1, 128   ; Perform AND operation on the 
+                 ; variable MASK1 and 128
+					  
+ADD MARKS, 10    ; Add 10 to the variable MARKS
+MOV AL, 10       ; Transfer the value 10 to the AL register
+</pre>
+<h2>The Hello World Program in Assembly</h2>
+<p>The following assembly language code displays the string 'Hello World' on the screen −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global_start     ;must be declared for linker (ld)
+	
+_start:	            ;tells linker entry point
+   mov	edx,len     ;message length
+   mov	ecx,msg     ;message to write
+   mov	ebx,1       ;file descriptor (stdout)
+   mov	eax,4       ;system call number (sys_write)
+   int	0x80        ;call kernel
+	
+   mov	eax,1       ;system call number (sys_exit)
+   int	0x80        ;call kernel
+
+section	.data
+msg db 'Hello, world!', 0xa  ;our dear string
+len equ $ - msg              ;length of our dear string
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Hello, world!
+</pre>
+<h2>Compiling and Linking an Assembly Program in NASM</h2>
+<p>Make sure you have set the path of <b>nasm</b> and <b>ld</b> binaries in your PATH environment variable. Now, take the following steps for compiling and linking the above program −</p>
+<ul class="list">
+<li><p>Type the above code using a text editor and save it as hello.asm.</p></li>
+<li><p>Make sure that you are in the same directory as where you saved <b>hello.asm</b>.</p></li>
+<li><p>To assemble the program, type <b>nasm -f elf hello.asm</b></p></li>
+<li><p>If there is any error, you will be prompted about that at this stage. Otherwise, an object file of your program named <b>hello.o</b> will be created. </p></li>
+<li><p>To link the object file and create an executable file named hello, type <b>ld -m elf_i386 -s -o hello hello.o</b></p></li>
+<li><p>Execute the program by typing <b>./hello</b></p></li>
+</ul>
+<p>If you have done everything correctly, it will display 'Hello, world!' on the screen.</p>
+<h1>Assembly - Memory Segments</h1>
+<p>We have already discussed the three sections of an assembly program. These sections represent various memory segments as well.</p>
+<p>Interestingly, if you replace the section keyword with segment, you will get the same result. Try the following code −</p>
+<pre class="prettyprint notranslate tryit">segment .text	   ;code segment
+   global_start    ;must be declared for linker 
+	
+_start:	           ;tell linker entry point
+   mov edx,len	   ;message length
+   mov ecx,msg     ;message to write
+   mov ebx,1	   ;file descriptor (stdout)
+   mov eax,4	   ;system call number (sys_write)
+   int 0x80	   ;call kernel
+
+   mov eax,1       ;system call number (sys_exit)
+   int 0x80	   ;call kernel
+
+segment .data      ;data segment
+msg	db 'Hello, world!',0xa   ;our dear string
+len	equ	$ - msg          ;length of our dear string
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Hello, world!
+</pre>
+<h2>Memory Segments</h2>
+<p>A segmented memory model divides the system memory into groups of 
+independent segments referenced by pointers located in the segment 
+registers. Each segment is used to contain a specific type of data. One 
+segment is used to contain instruction codes, another segment stores the
+ data elements, and a third segment keeps the program stack.</p>
+<p>In the light of the above discussion, we can specify various memory segments as −</p>
+<ul class="list">
+<li><p><b>Data segment</b> − It is represented by <b>.data</b> section and the <b>.bss</b>.
+ The .data section is used to declare the memory region, where data 
+elements are stored for the program. This section cannot be expanded 
+after the data elements are declared, and it remains static throughout 
+the program.</p>
+<p>The .bss section is also a static memory section that contains 
+buffers for data to be declared later in the program. This buffer memory
+ is zero-filled. 
+</p></li>
+<li><p><b>Code segment</b> − It is represented by <b>.text</b> section. This defines an area in memory that stores the instruction codes. This is also a fixed area.</p></li>
+<li><p><b>Stack</b> − This segment contains data values passed to functions and procedures within the program.</p></li>
+</ul>
+<h1>Assembly - Registers</h1>
+<p>Processor operations mostly involve processing data. This data can be
+ stored in memory and accessed from thereon. However, reading data from 
+and storing data into memory slows down the processor, as it involves 
+complicated processes of sending the data request across the control bus
+ and into the memory storage unit and getting the data through the same 
+channel.</p> 
+<p>To speed up the processor operations, the processor includes some internal memory storage locations, called <b>registers</b>.</p>
+<p>The registers store data elements for processing without having to 
+access the memory. A limited number of registers are built into the 
+processor chip.</p>
+<h2>Processor Registers</h2>
+<p>There are ten 32-bit and six 16-bit processor registers in IA-32 architecture. The registers are grouped into three categories −</p>
+<ul class="list">
+<li>General registers,</li>
+<li>Control registers, and</li>
+<li>Segment registers.</li>
+</ul>
+<p>The general registers are further divided into the following groups −</p>
+<ul class="list">
+<li>Data registers,</li>
+<li>Pointer registers, and</li>
+<li>Index registers.</li>
+</ul>
+<h2>Data Registers</h2>
+<p>Four 32-bit data registers are used for arithmetic, logical, and 
+other operations. These 32-bit registers can be used in three ways −</p>
+<ul class="list">
+<li><p>As complete 32-bit data registers: EAX, EBX, ECX, EDX.</p></li>
+<li><p>Lower halves of the 32-bit registers can be used as four 16-bit data registers: AX, BX, CX and DX.</p></li>
+<li><p>Lower and higher halves of the above-mentioned four 16-bit 
+registers can be used as eight 8-bit data registers: AH, AL, BH, BL, CH,
+ CL, DH, and DL.</p></li>
+</ul>
+<img src="Assembly%20Quick%20Guide_files/register1.jpg" alt="Data Registers">
+<p>Some of these data registers have specific use in arithmetical operations.</p>
+<p><b>AX is the primary accumulator</b>; it is used in input/output and 
+most arithmetic instructions. For example, in multiplication operation, 
+one operand is stored in EAX or AX or AL register according to the size 
+of the operand.</p>
+<p><b>BX is known as the base register</b>, as it could be used in indexed addressing.</p>
+<p><b>CX is known as the count register</b>, as the ECX, CX registers store the loop count in iterative operations.</p>
+<p><b>DX is known as the data register</b>. It is also used in 
+input/output operations. It is also used with AX register along with DX 
+for multiply and divide operations involving large values.</p>
+<h2>Pointer Registers</h2>
+<p>The pointer registers are 32-bit EIP, ESP, and EBP registers and 
+corresponding 16-bit right portions IP, SP, and BP. There are three 
+categories of pointer registers −</p>
+<ul class="list">
+<li><p><b>Instruction Pointer (IP)</b> − The 16-bit IP register stores 
+the offset address of the next instruction to be executed. IP in 
+association with the CS register (as CS:IP) gives the complete address 
+of the current instruction in the code segment.</p></li>
+<li><p><b>Stack Pointer (SP)</b> − The 16-bit SP register provides the 
+offset value within the program stack. SP in association with the SS 
+register (SS:SP) refers to be current position of data or address within
+ the program stack.</p></li>
+<li><p><b>Base Pointer (BP)</b> − The 16-bit BP register mainly helps in
+ referencing the parameter variables passed to a subroutine. The address
+ in SS register is combined with the offset in BP to get the location of
+ the parameter. BP can also be combined with DI and SI as base register 
+for special addressing.</p></li>
+</ul>
+<img src="Assembly%20Quick%20Guide_files/register3.jpg" alt="Pointer Registers">
+<h2>Index Registers</h2>
+<p>The 32-bit index registers, ESI and EDI, and their 16-bit rightmost 
+portions. SI and DI, are used for indexed addressing and sometimes used 
+in addition and subtraction. There are two sets of index pointers −</p>
+<ul class="list">
+<li><p><b>Source Index (SI)</b> − It is used as source index for string operations.</p></li>
+<li><p><b>Destination Index (DI)</b> − It is used as destination index for string operations.</p></li>
+</ul>
+<img src="Assembly%20Quick%20Guide_files/register2.jpg" alt="Index Registers">
+<h2>Control Registers</h2>
+<p>The 32-bit instruction pointer register and the 32-bit flags register combined are considered as the control registers.</p>
+<p>Many instructions involve comparisons and mathematical calculations 
+and change the status of the flags and some other conditional 
+instructions test the value of these status flags to take the control 
+flow to other location.</p>
+<p>The common flag bits are:</p>
+<ul class="list">
+<li><p><b>Overflow Flag (OF)</b> − It indicates the overflow of a high-order bit (leftmost bit) of data after a signed arithmetic operation.</p></li>
+<li><p><b>Direction Flag (DF)</b> − It determines left or right 
+direction for moving or comparing string data. When the DF value is 0, 
+the string operation takes left-to-right direction and when the value is
+ set to 1, the string operation takes right-to-left direction.</p></li>
+<li><p><b>Interrupt Flag (IF)</b> − It determines whether the external 
+interrupts like keyboard entry, etc., are to be ignored or processed. It
+ disables the external interrupt when the value is 0 and enables 
+interrupts when set to 1.</p></li>
+<li><p><b>Trap Flag (TF)</b> − It allows setting the operation of the 
+processor in single-step mode. The DEBUG program we used sets the trap 
+flag, so we could step through the execution one instruction at a time.</p></li>
+<li><p><b>Sign Flag (SF)</b> − It shows the sign of the result of an 
+arithmetic operation. This flag is set according to the sign of a data 
+item following the arithmetic operation. The sign is indicated by the 
+high-order of leftmost bit. A positive result clears the value of SF to 0
+ and negative result sets it to 1. </p></li>
+<li><p><b>Zero Flag (ZF)</b> − It indicates the result of an arithmetic 
+or comparison operation. A nonzero result clears the zero flag to 0, and
+ a zero result sets it to 1.</p></li>
+<li><p><b>Auxiliary Carry Flag (AF)</b> − It contains the carry from bit
+ 3 to bit 4 following an arithmetic operation; used for specialized 
+arithmetic. The AF is set when a 1-byte arithmetic operation causes a 
+carry from bit 3 into bit 4. </p></li>
+<li><p><b>Parity Flag (PF)</b> − It indicates the total number of 1-bits
+ in the result obtained from an arithmetic operation. An even number of 
+1-bits clears the parity flag to 0 and an odd number of 1-bits sets the 
+parity flag to 1.</p></li>
+<li><p><b>Carry Flag (CF)</b> − It contains the carry of 0 or 1 from a 
+high-order bit (leftmost) after an arithmetic operation. It also stores 
+the contents of last bit of a <i>shift</i> or <i>rotate</i> operation.</p></li>
+</ul>
+<p>The following table indicates the position of flag bits in the 16-bit Flags register:</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Flag:</th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>O</td>
+<td>D</td>
+<td>I</td>
+<td>T</td>
+<td>S</td>
+<td>Z</td>
+<td></td>
+<td>A</td>
+<td></td>
+<td>P</td>
+<td></td>
+<td>C</td>
+</tr>
+<tr>
+<th>Bit no:</th>
+<td>15</td>
+<td>14</td>
+<td>13</td>
+<td>12</td>
+<td>11</td>
+<td>10</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h2>Segment Registers</h2>
+<p>Segments are specific areas defined in a program for containing data, code and stack. There are three main segments −</p>
+<ul class="list">
+<li><p><b>Code Segment</b> − It contains all the instructions to be 
+executed. A 16-bit Code Segment register or CS register stores the 
+starting address of the code segment.</p></li>
+<li><p><b>Data Segment</b> − It contains data, constants and work areas.
+ A 16-bit Data Segment register or DS register stores the starting 
+address of the data segment.</p></li>
+<li><p><b>Stack Segment</b> − It contains data and return addresses of 
+procedures or subroutines. It is implemented as a 'stack' data 
+structure. The Stack Segment register or SS register stores the starting
+ address of the stack.</p></li>
+</ul>
+<p>Apart from the DS, CS and SS registers, there are other extra segment
+ registers - ES (extra segment), FS and GS, which provide additional 
+segments for storing data.</p>
+<p>In assembly programming, a program needs to access the memory 
+locations. All memory locations within a segment are relative to the 
+starting address of the segment. A segment begins in an address evenly 
+divisible by 16 or hexadecimal 10. So, the rightmost hex digit in all 
+such memory addresses is 0, which is not generally stored in the segment
+ registers.</p>
+<p>The segment registers stores the starting addresses of a segment. To 
+get the exact location of data or instruction within a segment, an 
+offset value (or displacement) is required. To reference any memory 
+location in a segment, the processor combines the segment address in the
+ segment register with the offset value of the location.</p>
+<h2>Example</h2>
+<p>Look at the following simple program to understand the use of 
+registers in assembly programming. This program displays 9 stars on the 
+screen along with a simple message −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global_start	 ;must be declared for linker (gcc)
+	
+_start:	         ;tell linker entry point
+   mov	edx,len  ;message length
+   mov	ecx,msg  ;message to write
+   mov	ebx,1    ;file descriptor (stdout)
+   mov	eax,4    ;system call number (sys_write)
+   int	0x80     ;call kernel
+	
+   mov	edx,9    ;message length
+   mov	ecx,s2   ;message to write
+   mov	ebx,1    ;file descriptor (stdout)
+   mov	eax,4    ;system call number (sys_write)
+   int	0x80     ;call kernel
+	
+   mov	eax,1    ;system call number (sys_exit)
+   int	0x80     ;call kernel
+	
+section	.data
+msg db 'Displaying 9 stars',0xa ;a message
+len equ $ - msg  ;length of message
+s2 times 9 db '*'
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Displaying 9 stars
+*********
+</pre>
+<h1>Assembly - System Calls</h1>
+<p>System calls are APIs for the interface between the user space and 
+the kernel space. We have already used the system calls. sys_write and 
+sys_exit, for writing into the screen and exiting from the program, 
+respectively.</p>
+<h2>Linux System Calls</h2>
+<p>You can make use of Linux system calls in your assembly programs. You
+ need to take the following steps for using Linux system calls in your 
+program −</p>
+<ul class="list">
+<li>Put the system call number in the EAX register.</li>
+<li>Store the arguments to the system call in the registers EBX, ECX, etc.</li>
+<li>Call the relevant interrupt (80h).</li>
+<li>The result is usually returned in the EAX register.</li>
+</ul>
+<p>There are six registers that store the arguments of the system call 
+used. These are the EBX, ECX, EDX, ESI, EDI, and EBP. These registers 
+take the consecutive arguments, starting with the EBX register. If there
+ are more than six arguments, then the memory location of the first 
+argument is stored in the EBX register.</p>
+<p>The following code snippet shows the use of the system call sys_exit −</p>
+<pre class="prettyprint notranslate">mov	eax,1		; system call number (sys_exit)
+int	0x80		; call kernel
+</pre>
+<p>The following code snippet shows the use of the system call sys_write −</p>
+<pre class="prettyprint notranslate">mov	edx,4		; message length
+mov	ecx,msg		; message to write
+mov	ebx,1		; file descriptor (stdout)
+mov	eax,4		; system call number (sys_write)
+int	0x80		; call kernel
+</pre>
+<p>All the syscalls are listed in <i>/usr/include/asm/unistd.h</i>, together with their numbers (the value to put in EAX before you call int 80h).</p>
+<p>The following table shows some of the system calls used in this tutorial −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>%eax</th>
+<th>Name</th>
+<th>%ebx</th>
+<th>%ecx</th>
+<th>%edx</th>
+<th>%esx</th>
+<th>%edi</th>
+</tr>
+<tr>
+<td>1</td>
+<td>sys_exit</td>
+<td>int</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>2</td>
+<td>sys_fork</td>
+<td>struct pt_regs</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>sys_read</td>
+<td>unsigned int</td>
+<td>char *</td>
+<td>size_t</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>4</td>
+<td>sys_write</td>
+<td>unsigned int</td>
+<td>const char *</td>
+<td>size_t</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5</td>
+<td>sys_open</td>
+<td>const char *</td>
+<td>int</td>
+<td>int</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>6</td>
+<td>sys_close</td>
+<td>unsigned int</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h2>Example</h2>
+<p>The following example reads a number from the keyboard and displays it on the screen −</p>
+<pre class="prettyprint notranslate tryit">section .data                           ;Data segment
+   userMsg db 'Please enter a number: ' ;Ask the user to enter a number
+   lenUserMsg equ $-userMsg             ;The length of the message
+   dispMsg db 'You have entered: '
+   lenDispMsg equ $-dispMsg                 
+
+section .bss           ;Uninitialized data
+   num resb 5
+	
+section .text          ;Code Segment
+   global _start
+	
+_start:                ;User prompt
+   mov eax, 4
+   mov ebx, 1
+   mov ecx, userMsg
+   mov edx, lenUserMsg
+   int 80h
+
+   ;Read and store the user input
+   mov eax, 3
+   mov ebx, 2
+   mov ecx, num  
+   mov edx, 5          ;5 bytes (numeric, 1 for sign) of that information
+   int 80h
+	
+   ;Output the message 'The entered number is: '
+   mov eax, 4
+   mov ebx, 1
+   mov ecx, dispMsg
+   mov edx, lenDispMsg
+   int 80h  
+
+   ;Output the number entered
+   mov eax, 4
+   mov ebx, 1
+   mov ecx, num
+   mov edx, 5
+   int 80h  
+    
+   ; Exit code
+   mov eax, 1
+   mov ebx, 0
+   int 80h
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Please enter a number:
+1234  
+You have entered:1234
+</pre>
+<h1>Assembly - Addressing Modes</h1>
+<p>Most assembly language instructions require operands to be processed.
+ An operand address provides the location, where the data to be 
+processed is stored. Some instructions do not require an operand, 
+whereas some other instructions may require one, two, or three operands.</p>
+<p>When an instruction requires two operands, the first operand is 
+generally the destination, which contains data in a register or memory 
+location and the second operand is the source. Source contains either 
+the data to be delivered (immediate addressing) or the address (in 
+register or memory) of the data. Generally, the source data remains 
+unaltered after the operation.</p>
+<p>The three basic modes of addressing are −</p>
+<ul class="list">
+<li>Register addressing</li>
+<li>Immediate addressing</li>
+<li>Memory addressing</li>
+</ul>
+<h2>Register Addressing</h2>
+<p>In this addressing mode, a register contains the operand. Depending 
+upon the instruction, the register may be the first operand, the second 
+operand or both.</p>
+<p>For example,</p>
+<pre class="prettyprint notranslate">MOV DX, TAX_RATE   ; Register in first operand
+MOV COUNT, CX	   ; Register in second operand
+MOV EAX, EBX	   ; Both the operands are in registers
+</pre>
+<p>As processing data between registers does not involve memory, it provides fastest processing of data.</p>
+<h2>Immediate Addressing</h2>
+<p>An immediate operand has a constant value or an expression. When an 
+instruction with two operands uses immediate addressing, the first 
+operand may be a register or memory location, and the second operand is 
+an immediate constant. The first operand defines the length of the data.</p>
+<p>For example,</p>
+<pre class="prettyprint notranslate">BYTE_VALUE  DB  150    ; A byte value is defined
+WORD_VALUE  DW  300    ; A word value is defined
+ADD  BYTE_VALUE, 65    ; An immediate operand 65 is added
+MOV  AX, 45H           ; Immediate constant 45H is transferred to AX
+</pre>
+<h2>Direct Memory Addressing</h2>
+<p>When operands are specified in memory addressing mode, direct access 
+to main memory, usually to the data segment, is required. This way of 
+addressing results in slower processing of data. To locate the exact 
+location of data in memory, we need the segment start address, which is 
+typically found in the DS register and an offset value. This offset 
+value is also called <b>effective address</b>.</p>
+<p>In direct addressing mode, the offset value is specified directly as 
+part of the instruction, usually indicated by the variable name. The 
+assembler calculates the offset value and maintains a symbol table, 
+which stores the offset values of all the variables used in the program.</p>
+<p>In direct memory addressing, one of the operands refers to a memory location and the other operand references a register.</p>
+<p>For example,</p>
+<pre class="prettyprint notranslate">ADD	BYTE_VALUE, DL	; Adds the register in the memory location
+MOV	BX, WORD_VALUE	; Operand from the memory is added to register
+</pre>
+<h2>Direct-Offset Addressing</h2>
+<p>This addressing mode uses the arithmetic operators to modify an 
+address. For example, look at the following definitions that define 
+tables of data −</p>
+<pre class="prettyprint notranslate">BYTE_TABLE DB  14, 15, 22, 45      ; Tables of bytes
+WORD_TABLE DW  134, 345, 564, 123  ; Tables of words
+</pre>
+<p>The following operations access data from the tables in the memory into registers −</p>
+<pre class="prettyprint notranslate">MOV CL, BYTE_TABLE[2]	; Gets the 3rd element of the BYTE_TABLE
+MOV CL, BYTE_TABLE + 2	; Gets the 3rd element of the BYTE_TABLE
+MOV CX, WORD_TABLE[3]	; Gets the 4th element of the WORD_TABLE
+MOV CX, WORD_TABLE + 3	; Gets the 4th element of the WORD_TABLE
+</pre>
+<h2>Indirect Memory Addressing</h2>
+<p>This addressing mode utilizes the computer's ability of <i>Segment:Offset</i>
+ addressing. Generally, the base registers EBX, EBP (or BX, BP) and the 
+index registers (DI, SI), coded within square brackets for memory 
+references, are used for this purpose.</p>
+<p>Indirect addressing is generally used for variables containing 
+several elements like, arrays. Starting address of the array is stored 
+in, say, the EBX register.</p> 
+<p>The following code snippet shows how to access different elements of the variable.</p>
+<pre class="prettyprint notranslate">MY_TABLE TIMES 10 DW 0  ; Allocates 10 words (2 bytes) each initialized to 0
+MOV EBX, [MY_TABLE]     ; Effective Address of MY_TABLE in EBX
+MOV [EBX], 110          ; MY_TABLE[0] = 110
+ADD EBX, 2              ; EBX = EBX +2
+MOV [EBX], 123          ; MY_TABLE[1] = 123
+</pre>
+<h2>The MOV Instruction</h2>
+<p>We have already used the MOV instruction that is used for moving data
+ from one storage space to another. The MOV instruction takes two 
+operands.</p>
+<h3>Syntax</h3>
+<p>The syntax of the MOV instruction is −</p>
+<pre class="result notranslate">MOV  destination, source
+</pre>
+<p>The MOV instruction may have one of the following five forms −</p>
+<pre class="prettyprint notranslate">MOV  register, register
+MOV  register, immediate
+MOV  memory, immediate
+MOV  register, memory
+MOV  memory, register
+</pre>
+<p>Please note that −</p>
+<ul class="list">
+<li>Both the operands in MOV operation should be of same size</li>
+<li>The value of source operand remains unchanged</li>
+</ul>
+<p>The MOV instruction causes ambiguity at times. For example, look at the statements −</p>
+<pre class="prettyprint notranslate">MOV  EBX, [MY_TABLE]  ; Effective Address of MY_TABLE in EBX
+MOV  [EBX], 110	      ; MY_TABLE[0] = 110
+</pre>
+<p>It is not clear whether you want to move a byte equivalent or word 
+equivalent of the number 110. In such cases, it is wise to use a <b>type specifier</b>.</p>
+<p>Following table shows some of the common type specifiers −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Type Specifier</th>
+<th>Bytes addressed</th>
+</tr>
+<tr>
+<td>BYTE</td>
+<td>1</td>
+</tr>
+<tr>
+<td>WORD</td>
+<td>2</td>
+</tr>
+<tr>
+<td>DWORD</td>
+<td>4</td>
+</tr>
+<tr>
+<td>QWORD</td>
+<td>8</td>
+</tr>
+<tr>
+<td>TBYTE</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<h3>Example</h3>
+<p>The following program illustrates some of the concepts discussed 
+above. It stores a name 'Zara Ali' in the data section of the memory, 
+then changes its value to another name 'Nuha Ali' programmatically and 
+displays both the names.</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global_start     ;must be declared for linker (ld)
+_start:             ;tell linker entry point
+	
+   ;writing the name 'Zara Ali'
+   mov	edx,9       ;message length
+   mov	ecx, name   ;message to write
+   mov	ebx,1       ;file descriptor (stdout)
+   mov	eax,4       ;system call number (sys_write)
+   int	0x80        ;call kernel
+	
+   mov	[name],  dword 'Nuha'    ; Changed the name to Nuha Ali
+	
+   ;writing the name 'Nuha Ali'
+   mov	edx,8       ;message length
+   mov	ecx,name    ;message to write
+   mov	ebx,1       ;file descriptor (stdout)
+   mov	eax,4       ;system call number (sys_write)
+   int	0x80        ;call kernel
+	
+   mov	eax,1       ;system call number (sys_exit)
+   int	0x80        ;call kernel
+
+section	.data
+name db 'Zara Ali '
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Zara Ali Nuha Ali
+</pre>
+<h1>Assembly - Variables</h1>
+<p>NASM provides various <b>define directives</b> for reserving storage 
+space for variables. The define assembler directive is used for 
+allocation of storage space. It can be used to reserve as well as 
+initialize one or more bytes.</p>
+<h2>Allocating Storage Space for Initialized Data</h2>
+<p>The syntax for storage allocation statement for initialized data is −</p>
+<pre class="result notranslate">[variable-name]    define-directive    initial-value   [,initial-value]...
+</pre>
+<p>Where, <i>variable-name</i> is the identifier for each storage space.
+ The assembler associates an offset value for each variable name defined
+ in the data segment.</p>
+<p>There are five basic forms of the define directive −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Directive</th>
+<th>Purpose</th>
+<th>Storage Space</th>
+</tr>
+<tr>
+<td>DB</td>
+<td>Define Byte</td>
+<td>allocates 1 byte</td>
+</tr>
+<tr>
+<td>DW</td>
+<td>Define Word</td>
+<td>allocates 2 bytes</td>
+</tr>
+<tr>
+<td>DD</td>
+<td>Define Doubleword</td>
+<td>allocates 4 bytes</td>
+</tr>
+<tr>
+<td>DQ</td>
+<td>Define Quadword</td>
+<td>allocates 8 bytes</td>
+</tr>
+<tr>
+<td>DT</td>
+<td>Define Ten Bytes</td>
+<td>allocates 10 bytes</td>
+</tr>
+</tbody></table>
+<p>Following are some examples of using define directives −</p>
+<pre class="prettyprint notranslate">choice		DB	'y'
+number		DW	12345
+neg_number	DW	-12345
+big_number	DQ	123456789
+real_number1	DD	1.234
+real_number2	DQ	123.456
+</pre>
+<p>Please note that −</p>
+<ul class="list">
+<li><p>Each byte of character is stored as its ASCII value in hexadecimal.</p></li>
+<li><p>Each decimal value is automatically converted to its 16-bit binary equivalent and stored as a hexadecimal number.</p></li>
+<li><p>Processor uses the little-endian byte ordering.</p></li>
+<li><p>Negative numbers are converted to its 2's complement representation. </p></li>
+<li><p>Short and long floating-point numbers are represented using 32 or 64 bits, respectively.</p></li>
+</ul>
+<p>The following program shows the use of define directive −</p>
+<pre class="prettyprint notranslate tryit">section .text
+   global _start          ;must be declared for linker (gcc)
+	
+_start:                   ;tell linker entry point
+   mov	edx,1		  ;message length
+   mov	ecx,choice        ;message to write
+   mov	ebx,1		  ;file descriptor (stdout)
+   mov	eax,4		  ;system call number (sys_write)
+   int	0x80		  ;call kernel
+
+   mov	eax,1		  ;system call number (sys_exit)
+   int	0x80		  ;call kernel
+
+section .data
+choice DB 'y'
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">y
+</pre>
+<h2>Allocating Storage Space for Uninitialized Data</h2>
+<p>The reserve directives are used for reserving space for uninitialized
+ data. The reserve directives take a single operand that specifies the 
+number of units of space to be reserved. Each define directive has a 
+related reserve directive.</p>
+<p>There are five basic forms of the reserve directive −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Directive</th>
+<th>Purpose</th>
+</tr>
+<tr>
+<td>RESB</td>
+<td>Reserve a Byte</td>
+</tr>
+<tr>
+<td>RESW</td>
+<td>Reserve a Word</td>
+</tr>
+<tr>
+<td>RESD</td>
+<td>Reserve a Doubleword</td>
+</tr>
+<tr>
+<td>RESQ</td>
+<td>Reserve a Quadword</td>
+</tr>
+<tr>
+<td>REST</td>
+<td>Reserve a Ten Bytes</td>
+</tr>
+</tbody></table>
+<h2>Multiple Definitions</h2>
+<p>You can have multiple data definition statements in a program. For example −</p>
+<pre class="prettyprint notranslate">choice	  DB 	'Y' 		 ;ASCII of y = 79H
+number1	  DW 	12345 	 ;12345D = 3039H
+number2    DD  12345679  ;123456789D = 75BCD15H
+</pre>
+<p>The assembler allocates contiguous memory for multiple variable definitions.</p>
+<h2>Multiple Initializations</h2>
+<p>The TIMES directive allows multiple initializations to the same 
+value. For example, an array named marks of size 9 can be defined and 
+initialized to zero using the following statement −</p>
+<pre class="result notranslate">marks  TIMES  9  DW  0
+</pre>
+<p>The TIMES directive is useful in defining arrays and tables. The following program displays 9 asterisks on the screen −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start        ;must be declared for linker (ld)
+	
+_start:                 ;tell linker entry point
+   mov	edx,9		;message length
+   mov	ecx, stars	;message to write
+   mov	ebx,1		;file descriptor (stdout)
+   mov	eax,4		;system call number (sys_write)
+   int	0x80		;call kernel
+
+   mov	eax,1		;system call number (sys_exit)
+   int	0x80		;call kernel
+
+section	.data
+stars   times 9 db '*'
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">*********
+</pre>
+<h1>Assembly - Constants</h1>
+<p>There are several directives provided by NASM that define constants. 
+We have already used the EQU directive in previous chapters. We will 
+particularly discuss three directives −</p>
+<ul class="list">
+<li>EQU</li>
+<li>%assign</li>
+<li>%define</li>
+</ul>
+<h2>The EQU Directive</h2>
+<p>The <b>EQU</b> directive is used for defining constants. The syntax of the EQU directive is as follows −</p>
+<pre class="result notranslate">CONSTANT_NAME EQU expression
+</pre>
+<p>For example,</p>
+<pre class="result notranslate">TOTAL_STUDENTS equ 50
+</pre>
+<p>You can then use this constant value in your code, like −</p>
+<pre class="prettyprint notranslate">mov  ecx,  TOTAL_STUDENTS 
+cmp  eax,  TOTAL_STUDENTS
+</pre>
+<p>The operand of an EQU statement can be an expression −</p>
+<pre class="prettyprint notranslate">LENGTH equ 20
+WIDTH  equ 10
+AREA   equ length * width
+</pre>
+<p>Above code segment would define AREA as 200.</p>
+<h3>Example</h3>
+<p>The following example illustrates the use of the EQU directive −</p>
+<pre class="prettyprint notranslate tryit">SYS_EXIT  equ 1
+SYS_WRITE equ 4
+STDIN     equ 0
+STDOUT    equ 1
+section	 .text
+   global _start    ;must be declared for using gcc
+	
+_start:             ;tell linker entry point
+   mov eax, SYS_WRITE         
+   mov ebx, STDOUT         
+   mov ecx, msg1         
+   mov edx, len1 
+   int 0x80                
+	
+   mov eax, SYS_WRITE         
+   mov ebx, STDOUT         
+   mov ecx, msg2         
+   mov edx, len2 
+   int 0x80 
+	
+   mov eax, SYS_WRITE         
+   mov ebx, STDOUT         
+   mov ecx, msg3         
+   mov edx, len3 
+   int 0x80
+   
+   mov eax,SYS_EXIT    ;system call number (sys_exit)
+   int 0x80            ;call kernel
+
+section	 .data
+msg1 db	'Hello, programmers!',0xA,0xD 	
+len1 equ $ - msg1			
+
+msg2 db 'Welcome to the world of,', 0xA,0xD 
+len2 equ $ - msg2 
+
+msg3 db 'Linux assembly programming! '
+len3 equ $- msg3
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Hello, programmers!
+Welcome to the world of,
+Linux assembly programming!
+</pre>
+<h2>The %assign Directive</h2>
+<p>The <b>%assign</b> directive can be used to define numeric constants 
+like the EQU directive. This directive allows redefinition. For example,
+ you may define the constant TOTAL as −</p>
+<pre class="result notranslate">%assign TOTAL 10
+</pre>
+<p>Later in the code, you can redefine it as −</p>
+<pre class="result notranslate">%assign  TOTAL  20
+</pre>
+<p>This directive is case-sensitive.</p>
+<h2>The %define Directive</h2>
+<p>The <b>%define</b> directive allows defining both numeric and string 
+constants. This directive is similar to the #define in C. For example, 
+you may define the constant PTR as −</p>
+<pre class="result notranslate">%define PTR [EBP+4]
+</pre>
+<p>The above code replaces <i>PTR</i> by [EBP+4].</p>
+<p>This directive also allows redefinition and it is case-sensitive.</p>
+<h1>Assembly - Arithmetic Instructions</h1>
+<h2>The INC Instruction</h2>
+<p>The INC instruction is used for incrementing an operand by one. It 
+works on a single operand that can be either in a register or in memory.</p>
+<h3>Syntax</h3>
+<p>The INC instruction has the following syntax −</p>
+<pre class="result notranslate">INC destination
+</pre>
+<p>The operand <i>destination</i> could be an 8-bit, 16-bit or 32-bit operand.</p>
+<h3>Example</h3>
+<pre class="prettyprint notranslate">INC EBX	     ; Increments 32-bit register
+INC DL       ; Increments 8-bit register
+INC [count]  ; Increments the count variable
+</pre>
+<h2>The DEC Instruction</h2>
+<p>The DEC instruction is used for decrementing an operand by one. It 
+works on a single operand that can be either in a register or in memory.</p>
+<h3>Syntax</h3>
+<p>The DEC instruction has the following syntax −</p>
+<pre class="result notranslate">DEC destination
+</pre>
+<p>The operand <i>destination</i> could be an 8-bit, 16-bit or 32-bit operand.</p>
+<h3>Example</h3>
+<pre class="prettyprint notranslate">segment .data
+   count dw  0
+   value db  15
+	
+segment .text
+   inc [count]
+   dec [value]
+	
+   mov ebx, count
+   inc word [ebx]
+	
+   mov esi, value
+   dec byte [esi]
+</pre>
+<h2>The ADD and SUB Instructions</h2>
+<p>The ADD and SUB instructions are used for performing simple 
+addition/subtraction of binary data in byte, word and doubleword size, 
+i.e., for adding or subtracting 8-bit, 16-bit or 32-bit operands, 
+respectively.</p>
+<h3>Syntax</h3>
+<p>The ADD and SUB instructions have the following syntax −</p>
+<pre class="result notranslate">ADD/SUB	destination, source
+</pre>
+<p>The ADD/SUB instruction can take place between −</p>
+<ul class="list">
+<li>Register to register</li>
+<li>Memory to register</li>
+<li>Register to memory</li>
+<li>Register to constant data</li>
+<li>Memory to constant data</li>
+</ul>
+<p>However, like other instructions, memory-to-memory operations are not
+ possible using ADD/SUB instructions. An ADD or SUB operation sets or 
+clears the overflow and carry flags.</p>
+<h3>Example</h3>
+<p>The following example will ask two digits from the user, store the 
+digits in the EAX and EBX register, respectively, add the values, store 
+the result in a memory location '<i>res</i>' and finally display the result.</p>
+<pre class="prettyprint notranslate tryit">SYS_EXIT  equ 1
+SYS_READ  equ 3
+SYS_WRITE equ 4
+STDIN     equ 0
+STDOUT    equ 1
+
+segment .data 
+
+   msg1 db "Enter a digit ", 0xA,0xD 
+   len1 equ $- msg1 
+
+   msg2 db "Please enter a second digit", 0xA,0xD 
+   len2 equ $- msg2 
+
+   msg3 db "The sum is: "
+   len3 equ $- msg3
+
+segment .bss
+
+   num1 resb 2 
+   num2 resb 2 
+   res resb 1    
+
+section	.text
+   global _start    ;must be declared for using gcc
+	
+_start:             ;tell linker entry point
+   mov eax, SYS_WRITE         
+   mov ebx, STDOUT         
+   mov ecx, msg1         
+   mov edx, len1 
+   int 0x80                
+
+   mov eax, SYS_READ 
+   mov ebx, STDIN  
+   mov ecx, num1 
+   mov edx, 2
+   int 0x80            
+
+   mov eax, SYS_WRITE        
+   mov ebx, STDOUT         
+   mov ecx, msg2          
+   mov edx, len2         
+   int 0x80
+
+   mov eax, SYS_READ  
+   mov ebx, STDIN  
+   mov ecx, num2 
+   mov edx, 2
+   int 0x80        
+
+   mov eax, SYS_WRITE         
+   mov ebx, STDOUT         
+   mov ecx, msg3          
+   mov edx, len3         
+   int 0x80
+
+   ; moving the first number to eax register and second number to ebx
+   ; and subtracting ascii '0' to convert it into a decimal number
+	
+   mov eax, [num1]
+   sub eax, '0'
+	
+   mov ebx, [num2]
+   sub ebx, '0'
+
+   ; add eax and ebx
+   add eax, ebx
+   ; add '0' to to convert the sum from decimal to ASCII
+   add eax, '0'
+
+   ; storing the sum in memory location res
+   mov [res], eax
+
+   ; print the sum 
+   mov eax, SYS_WRITE        
+   mov ebx, STDOUT
+   mov ecx, res         
+   mov edx, 1        
+   int 0x80
+
+exit:    
+   
+   mov eax, SYS_EXIT   
+   xor ebx, ebx 
+   int 0x80
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Enter a digit:
+3
+Please enter a second digit:
+4
+The sum is:
+7
+</pre>
+<p><b>The program with hardcoded variables −</b></p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start    ;must be declared for using gcc
+	
+_start:             ;tell linker entry point
+   mov	eax,'3'
+   sub     eax, '0'
+	
+   mov 	ebx, '4'
+   sub     ebx, '0'
+   add 	eax, ebx
+   add	eax, '0'
+	
+   mov 	[sum], eax
+   mov	ecx,msg	
+   mov	edx, len
+   mov	ebx,1	;file descriptor (stdout)
+   mov	eax,4	;system call number (sys_write)
+   int	0x80	;call kernel
+	
+   mov	ecx,sum
+   mov	edx, 1
+   mov	ebx,1	;file descriptor (stdout)
+   mov	eax,4	;system call number (sys_write)
+   int	0x80	;call kernel
+	
+   mov	eax,1	;system call number (sys_exit)
+   int	0x80	;call kernel
+	
+section .data
+   msg db "The sum is:", 0xA,0xD 
+   len equ $ - msg   
+   segment .bss
+   sum resb 1
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">The sum is:
+7
+</pre>
+<h2>The MUL/IMUL Instruction</h2>
+<p>There are two instructions for multiplying binary data. The MUL 
+(Multiply) instruction handles unsigned data and the IMUL (Integer 
+Multiply) handles signed data. Both instructions affect the Carry and 
+Overflow flag.</p>
+<h3>Syntax</h3>
+<p>The syntax for the MUL/IMUL instructions is as follows −</p>
+<pre class="result notranslate">MUL/IMUL multiplier
+</pre>
+<p>Multiplicand in both cases will be in an accumulator, depending upon 
+the size of the multiplicand and the multiplier and the generated 
+product is also stored in two registers depending upon the size of the 
+operands. Following section explains MUL instructions with three 
+different cases −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>SN</th>
+<th>Scenarios</th>
+</tr>
+<tr>
+<td>1</td>
+<td><p><b>When two bytes are multiplied -</b></p>
+<p>The multiplicand is in the AL register, and the multiplier is a byte 
+in the memory or in another register. The product is in AX. High-order 8
+ bits of the product is stored in AH and the low-order 8 bits are stored
+ in AL.</p>
+<p><img src="Assembly%20Quick%20Guide_files/arithmetic1.jpg" alt="Arithmetic1"></p>
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td><p><b>When two one-word values are multiplied -</b></p>
+<p>The multiplicand should be in the AX register, and the multiplier is a
+ word in memory or another register. For example, for an instruction 
+like MUL DX, you must store the multiplier in DX and the multiplicand in
+ AX.</p>
+<p>The resultant product is a doubleword, which will need two registers.
+ The high-order (leftmost) portion gets stored in DX and the lower-order
+ (rightmost) portion gets stored in AX.</p>
+<p><img src="Assembly%20Quick%20Guide_files/arithmetic2.jpg" alt="Arithmetic2"></p>
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td><p><b>When two doubleword values are multiplied -</b></p>
+<p>When two doubleword values are multiplied, the multiplicand should be
+ in EAX and the multiplier is a doubleword value stored in memory or in 
+another register. The product generated is stored in the EDX:EAX 
+registers, i.e., the high order 32 bits gets stored in the EDX register 
+and the low order 32-bits are stored in the EAX register.</p>
+<p><img src="Assembly%20Quick%20Guide_files/arithmetic3.jpg" alt="Arithmetic3"></p>
+</td>
+</tr>
+</tbody></table>
+<h3>Example</h3>
+<pre class="prettyprint notranslate">MOV AL, 10
+MOV DL, 25
+MUL DL
+...
+MOV DL, 0FFH	; DL= -1
+MOV AL, 0BEH	; AL = -66
+IMUL DL
+</pre>
+<h3>Example</h3>
+<p>The following example multiplies 3 with 2, and displays the result −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start    ;must be declared for using gcc
+	
+_start:             ;tell linker entry point
+
+   mov	al,'3'
+   sub     al, '0'
+	
+   mov 	bl, '2'
+   sub     bl, '0'
+   mul 	bl
+   add	al, '0'
+	
+   mov 	[res], al
+   mov	ecx,msg	
+   mov	edx, len
+   mov	ebx,1	;file descriptor (stdout)
+   mov	eax,4	;system call number (sys_write)
+   int	0x80	;call kernel
+	
+   mov	ecx,res
+   mov	edx, 1
+   mov	ebx,1	;file descriptor (stdout)
+   mov	eax,4	;system call number (sys_write)
+   int	0x80	;call kernel
+	
+   mov	eax,1	;system call number (sys_exit)
+   int	0x80	;call kernel
+
+section .data
+msg db "The result is:", 0xA,0xD 
+len equ $- msg   
+segment .bss
+res resb 1
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">The result is:
+6
+</pre>
+<h2>The DIV/IDIV Instructions</h2>
+<p>The division operation generates two elements - a <b>quotient</b> and a <b>remainder</b>.
+ In case of multiplication, overflow does not occur because 
+double-length registers are used to keep the product. However, in case 
+of division, overflow may occur. The processor generates an interrupt if
+ overflow occurs.</p>
+<p>The DIV (Divide) instruction is used for unsigned data and the IDIV (Integer Divide) is used for signed data.</p>
+<h3>Syntax</h3>
+<p>The format for the DIV/IDIV instruction −</p>
+<pre class="result notranslate">DIV/IDIV	divisor
+</pre>
+<p>The dividend is in an accumulator. Both the instructions can work 
+with 8-bit, 16-bit or 32-bit operands. The operation affects all six 
+status flags. Following section explains three cases of division with 
+different operand size −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>SN</th>
+<th>Scenarios</th>
+</tr>
+<tr>
+<td>1</td>
+<td><p><b>When the divisor is 1 byte -</b></p>
+<p>The dividend is assumed to be in the AX register (16 bits). After 
+division, the quotient goes to the AL register and the remainder goes to
+ the AH register.</p>
+<p><img src="Assembly%20Quick%20Guide_files/arithmetic4.jpg" alt="Arithmetic4"></p>
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td><p><b>When the divisor is 1 word -</b></p>
+<p>The dividend is assumed to be 32 bits long and in the DX:AX 
+registers. The high-order 16 bits are in DX and the low-order 16 bits 
+are in AX. After division, the 16-bit quotient goes to the AX register 
+and the 16-bit remainder goes to the DX register.</p>
+<p><img src="Assembly%20Quick%20Guide_files/arithmetic5.jpg" alt="Arithmetic5"></p>
+</td>
+</tr>
+<tr>
+<td>3</td>
+<td><p><b>When the divisor is doubleword -</b></p>
+<p>The dividend is assumed to be 64 bits long and in the EDX:EAX 
+registers. The high-order 32 bits are in EDX and the low-order 32 bits 
+are in EAX. After division, the 32-bit quotient goes to the EAX register
+ and the 32-bit remainder goes to the EDX register.</p>
+<p><img src="Assembly%20Quick%20Guide_files/arithmetic6.jpg" alt="Arithmetic6"></p>
+</td>
+</tr>
+</tbody></table>
+<h3>Example</h3>
+<p>The following example divides 8 with 2. The <b>dividend 8</b> is stored in the <b>16-bit AX register</b> and the <b>divisor 2</b> is stored in the <b>8-bit BL register</b>.</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start    ;must be declared for using gcc
+	
+_start:             ;tell linker entry point
+   mov	ax,'8'
+   sub     ax, '0'
+	
+   mov 	bl, '2'
+   sub     bl, '0'
+   div 	bl
+   add	ax, '0'
+	
+   mov 	[res], ax
+   mov	ecx,msg	
+   mov	edx, len
+   mov	ebx,1	;file descriptor (stdout)
+   mov	eax,4	;system call number (sys_write)
+   int	0x80	;call kernel
+	
+   mov	ecx,res
+   mov	edx, 1
+   mov	ebx,1	;file descriptor (stdout)
+   mov	eax,4	;system call number (sys_write)
+   int	0x80	;call kernel
+	
+   mov	eax,1	;system call number (sys_exit)
+   int	0x80	;call kernel
+	
+section .data
+msg db "The result is:", 0xA,0xD 
+len equ $- msg   
+segment .bss
+res resb 1
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">The result is:
+4
+</pre>
+<h1>Assembly - Logical Instructions</h1>
+<p>The processor instruction set provides the instructions AND, OR, XOR,
+ TEST, and NOT Boolean logic, which tests, sets, and clears the bits 
+according to the need of the program.</p>
+<p>The format for these instructions −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>SN</th>
+<th>Instruction</th>
+<th>Format</th>
+</tr>
+<tr>
+<td>1</td>
+<td>AND</td>
+<td>AND operand1, operand2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>OR</td>
+<td>OR operand1, operand2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>XOR</td>
+<td>XOR operand1, operand2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>TEST</td>
+<td>TEST operand1, operand2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NOT</td>
+<td>NOT operand1</td>
+</tr>
+</tbody></table>
+<p>The first operand in all the cases could be either in register or in 
+memory. The second operand could be either in register/memory or an 
+immediate (constant) value. However, memory-to-memory operations are not
+ possible. These instructions compare or match bits of the operands and 
+set the CF, OF, PF, SF and ZF flags.</p>
+<h2>The AND Instruction</h2>
+<p>The AND instruction is used for supporting logical expressions by 
+performing bitwise AND operation. The bitwise AND operation returns 1, 
+if the matching bits from both the operands are 1, otherwise it returns 
+0. For example −</p>
+<pre class="result notranslate">             Operand1: 	0101
+             Operand2: 	0011
+----------------------------
+After AND -&gt; Operand1:	0001
+</pre>
+<p>The AND operation can be used for clearing one or more bits. For 
+example, say the BL register contains 0011 1010. If you need to clear 
+the high-order bits to zero, you AND it with 0FH.</p>
+<pre class="prettyprint notranslate">AND	BL,   0FH   ; This sets BL to 0000 1010
+</pre>
+<p>Let's take up another example. If you want to check whether a given 
+number is odd or even, a simple test would be to check the least 
+significant bit of the number. If this is 1, the number is odd, else the
+ number is even.</p>
+<p>Assuming the number is in AL register, we can write −</p>
+<pre class="prettyprint notranslate">AND	AL, 01H     ; ANDing with 0000 0001
+JZ    EVEN_NUMBER
+</pre>
+<p>The following program illustrates this −</p>
+<h3>Example</h3>
+<pre class="prettyprint notranslate tryit">section .text
+   global _start            ;must be declared for using gcc
+	
+_start:                     ;tell linker entry point
+   mov   ax,   8h           ;getting 8 in the ax 
+   and   ax, 1              ;and ax with 1
+   jz    evnn
+   mov   eax, 4             ;system call number (sys_write)
+   mov   ebx, 1             ;file descriptor (stdout)
+   mov   ecx, odd_msg       ;message to write
+   mov   edx, len2          ;length of message
+   int   0x80               ;call kernel
+   jmp   outprog
+
+evnn:   
+  
+   mov   ah,  09h
+   mov   eax, 4             ;system call number (sys_write)
+   mov   ebx, 1             ;file descriptor (stdout)
+   mov   ecx, even_msg      ;message to write
+   mov   edx, len1          ;length of message
+   int   0x80               ;call kernel
+
+outprog:
+
+   mov   eax,1              ;system call number (sys_exit)
+   int   0x80               ;call kernel
+
+section   .data
+even_msg  db  'Even Number!' ;message showing even number
+len1  equ  $ - even_msg 
+   
+odd_msg db  'Odd Number!'    ;message showing odd number
+len2  equ  $ - odd_msg
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Even Number!
+</pre>
+<p>Change the value in the ax register with an odd digit, like −</p>
+<pre class="prettyprint notranslate">mov  ax, 9h                  ; getting 9 in the ax
+</pre>
+<p>The program would display:</p>
+<pre class="result notranslate">Odd Number!
+</pre>
+<p>Similarly to clear the entire register you can AND it with 00H. </p>
+<h2>The OR Instruction</h2>
+<p>The OR instruction is used for supporting logical expression by 
+performing bitwise OR operation. The bitwise OR operator returns 1, if 
+the matching bits from either or both operands are one. It returns 0, if
+ both the bits are zero.</p>
+<p>For example,</p>
+<pre class="result notranslate">             Operand1:     0101
+             Operand2:     0011
+----------------------------
+After OR -&gt; Operand1:    0111
+</pre>
+<p>The OR operation can be used for setting one or more bits. For 
+example, let us assume the AL register contains 0011  1010, you need to 
+set the four low-order bits, you can OR it with a value 0000  1111, 
+i.e., FH.</p>
+<pre class="prettyprint notranslate">OR BL, 0FH                   ; This sets BL to  0011 1111
+</pre>
+<h3>Example</h3>
+<p>The following example demonstrates the OR instruction. Let us store 
+the value 5 and 3 in the AL and the BL registers, respectively, then the
+ instruction,</p>
+<pre class="prettyprint notranslate">OR AL, BL
+</pre>
+<p>should store 7 in the AL register −</p>
+<pre class="prettyprint notranslate tryit">section .text
+   global _start            ;must be declared for using gcc
+	
+_start:                     ;tell linker entry point
+   mov    al, 5             ;getting 5 in the al
+   mov    bl, 3             ;getting 3 in the bl
+   or     al, bl            ;or al and bl registers, result should be 7
+   add    al, byte '0'      ;converting decimal to ascii
+	
+   mov    [result],  al
+   mov    eax, 4
+   mov    ebx, 1
+   mov    ecx, result
+   mov    edx, 1 
+   int    0x80
+    
+outprog:
+   mov    eax,1             ;system call number (sys_exit)
+   int    0x80              ;call kernel
+	
+section    .bss
+result resb 1
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">7
+</pre>
+<h2>The XOR Instruction</h2>
+<p>The XOR instruction implements the bitwise XOR operation. The XOR 
+operation sets the resultant bit to 1, if and only if the bits from the 
+operands are different. If the bits from the operands are same (both 0 
+or both 1), the resultant bit is cleared to 0.</p>
+<p>For example,</p>
+<pre class="result notranslate">             Operand1:     0101
+             Operand2:     0011
+----------------------------
+After XOR -&gt; Operand1:    0110
+</pre>
+<blockquote>XORing an operand with itself changes the operand to 0. This is used to clear a register.</blockquote>
+<pre class="prettyprint notranslate">XOR     EAX, EAX
+</pre>
+<h2>The TEST Instruction</h2>
+<p>The TEST instruction works same as the AND operation, but unlike AND 
+instruction, it does not change the first operand. So, if we need to 
+check whether a number in a register is even or odd, we can also do this
+ using the TEST instruction without changing the original number.</p>
+<pre class="prettyprint notranslate">TEST    AL, 01H
+JZ      EVEN_NUMBER
+</pre>
+<h2>The NOT Instruction</h2>
+<p>The NOT instruction implements the bitwise NOT operation. NOT 
+operation reverses the bits in an operand. The operand could be either 
+in a register or in the memory.</p>
+<p>For example,</p>
+<pre class="result notranslate">             Operand1:    0101 0011
+After NOT -&gt; Operand1:    1010 1100
+</pre>
+<h1>Assembly - Conditions</h1>
+<p>Conditional execution in assembly language is accomplished by several
+ looping and branching instructions. These instructions can change the 
+flow of control in a program. Conditional execution is observed in two 
+scenarios −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>SN</th>
+<th>Conditional Instructions</th>
+</tr>
+<tr>
+<td>1</td>
+<td><p><b>Unconditional jump</b></p>
+<p>This is performed by the JMP instruction. Conditional execution often
+ involves a transfer of control to the address of an instruction that 
+does not follow the currently executing instruction. Transfer of control
+ may be forward, to execute a new set of instructions or backward, to 
+re-execute the same steps.</p></td>
+</tr>
+<tr>
+<td>2</td>
+<td><p><b>Conditional jump</b></p>
+<p>This is performed by a set of jump instructions j&lt;condition&gt; 
+depending upon the condition. The conditional instructions transfer the 
+control by breaking the sequential flow and they do it by changing the 
+offset value in IP.</p></td>
+</tr>
+</tbody></table>
+<p>Let us discuss the CMP instruction before discussing the conditional instructions.</p>
+<h2>CMP Instruction</h2>
+<p>The CMP instruction compares two operands. It is generally used in 
+conditional execution. This instruction basically subtracts one operand 
+from the other for comparing whether the operands are equal or not. It 
+does not disturb the destination or source operands. It is used along 
+with the conditional jump instruction for decision making.</p>
+<h3>Syntax</h3>
+<pre class="result notranslate">CMP destination, source
+</pre>
+<p>CMP compares two numeric data fields. The destination operand could 
+be either in register or in memory. The source operand could be a 
+constant (immediate) data, register or memory.</p>
+<h3>Example</h3>
+<pre class="prettyprint notranslate">CMP DX,	00  ; Compare the DX value with zero
+JE  L7      ; If yes, then jump to label L7
+.
+.
+L7: ...  
+</pre>
+<p>CMP is often used for comparing whether a counter value has reached 
+the number of times a loop needs to be run. Consider the following 
+typical condition −</p>
+<pre class="prettyprint notranslate">INC	EDX
+CMP	EDX, 10	; Compares whether the counter has reached 10
+JLE	LP1     ; If it is less than or equal to 10, then jump to LP1
+</pre>
+<h2>Unconditional Jump</h2>
+<p>As mentioned earlier, this is performed by the JMP instruction. 
+Conditional execution often involves a transfer of control to the 
+address of an instruction that does not follow the currently executing 
+instruction. Transfer of control may be forward, to execute a new set of
+ instructions or backward, to re-execute the same steps.</p>
+<h3>Syntax</h3>
+<p>The JMP instruction provides a label name where the flow of control 
+is transferred immediately. The syntax of the JMP instruction is −</p>
+<pre class="result notranslate">JMP	label
+</pre>
+<h3>Example</h3>
+<p>The following code snippet illustrates the JMP instruction −</p>
+<pre class="prettyprint notranslate">MOV  AX, 00    ; Initializing AX to 0
+MOV  BX, 00    ; Initializing BX to 0
+MOV  CX, 01    ; Initializing CX to 1
+L20:
+ADD  AX, 01    ; Increment AX
+ADD  BX, AX    ; Add AX to BX
+SHL  CX, 1     ; shift left CX, this in turn doubles the CX value
+JMP  L20       ; repeats the statements
+</pre>
+<h2>Conditional Jump</h2>
+<p>If some specified condition is satisfied in conditional jump, the 
+control flow is transferred to a target instruction. There are numerous 
+conditional jump instructions depending upon the condition and data.</p>
+<p>Following are the conditional jump instructions used on signed data used for arithmetic operations −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Instruction</th>
+<th>Description</th>
+<th>Flags tested</th>
+</tr>
+<tr>
+<td>JE/JZ</td>
+<td>Jump Equal or Jump Zero</td>
+<td>ZF</td>
+</tr>
+<tr>
+<td>JNE/JNZ</td>
+<td>Jump not Equal or Jump Not Zero</td>
+<td>ZF</td>
+</tr>
+<tr>
+<td>JG/JNLE</td>
+<td>Jump Greater or Jump Not Less/Equal</td>
+<td>OF, SF, ZF</td>
+</tr>
+<tr>
+<td>JGE/JNL</td>
+<td>Jump Greater or Jump Not Less</td>
+<td>OF, SF</td>
+</tr>
+<tr>
+<td>JL/JNGE</td>
+<td>Jump Less or Jump Not Greater/Equal</td>
+<td>OF, SF</td>
+</tr>
+<tr>
+<td>JLE/JNG</td>
+<td>Jump Less/Equal or Jump Not Greater</td>
+<td>OF, SF, ZF</td>
+</tr>
+</tbody></table>
+<p>Following are the conditional jump instructions used on unsigned data used for logical operations −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Instruction</th>
+<th>Description</th>
+<th>Flags tested</th>
+</tr>
+<tr>
+<td>JE/JZ</td>
+<td>Jump Equal or Jump Zero</td>
+<td>ZF</td>
+</tr>
+<tr>
+<td>JNE/JNZ</td>
+<td>Jump not Equal or Jump Not Zero</td>
+<td>ZF</td>
+</tr>
+<tr>
+<td>JA/JNBE</td>
+<td>Jump Above or Jump Not Below/Equal</td>
+<td>CF, ZF</td>
+</tr>
+<tr>
+<td>JAE/JNB</td>
+<td>Jump Above/Equal or Jump Not Below</td>
+<td>CF</td>
+</tr>
+<tr>
+<td>JB/JNAE</td>
+<td>Jump Below or Jump Not Above/Equal</td>
+<td>CF</td>
+</tr>
+<tr>
+<td>JBE/JNA</td>
+<td>Jump Below/Equal or Jump Not Above</td>
+<td>AF, CF</td>
+</tr>
+</tbody></table>
+<p>The following conditional jump instructions have special uses and check the value of flags −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>Instruction</th>
+<th>Description</th>
+<th>Flags tested</th>
+</tr>
+<tr>
+<td>JXCZ</td>
+<td>Jump if CX is Zero</td>
+<td>none</td>
+</tr>
+<tr>
+<td>JC</td>
+<td>Jump If Carry</td>
+<td>CF</td>
+</tr>
+<tr>
+<td>JNC</td>
+<td>Jump If No Carry</td>
+<td>CF</td>
+</tr>
+<tr>
+<td>JO</td>
+<td>Jump If Overflow</td>
+<td>OF</td>
+</tr>
+<tr>
+<td>JNO</td>
+<td>Jump If No Overflow</td>
+<td>OF</td>
+</tr>
+<tr>
+<td>JP/JPE</td>
+<td>Jump Parity or Jump Parity Even</td>
+<td>PF</td>
+</tr>
+<tr>
+<td>JNP/JPO</td>
+<td>Jump No Parity or Jump Parity Odd</td>
+<td>PF</td>
+</tr>
+<tr>
+<td>JS</td>
+<td>Jump Sign (negative value)</td>
+<td>SF</td>
+</tr>
+<tr>
+<td>JNS</td>
+<td>Jump No Sign (positive value)</td>
+<td>SF</td>
+</tr>
+</tbody></table>
+<p>The syntax for the J&lt;condition&gt; set of instructions −</p>
+<p>Example,</p>
+<pre class="prettyprint notranslate">CMP	AL, BL
+JE	EQUAL
+CMP	AL, BH
+JE	EQUAL
+CMP	AL, CL
+JE	EQUAL
+NON_EQUAL: ...
+EQUAL: ...
+</pre>
+<h2>Example</h2>
+<p>The following program displays the largest of three variables. The 
+variables are double-digit variables. The three variables num1, num2 and
+ num3 have values 47, 22 and 31, respectively −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start         ;must be declared for using gcc
+
+_start:	                 ;tell linker entry point
+   mov   ecx, [num1]
+   cmp   ecx, [num2]
+   jg    check_third_num
+   mov   ecx, [num2]
+   
+	check_third_num:
+
+   cmp   ecx, [num3]
+   jg    _exit
+   mov   ecx, [num3]
+   
+	_exit:
+   
+   mov   [largest], ecx
+   mov   ecx,msg
+   mov   edx, len
+   mov   ebx,1	;file descriptor (stdout)
+   mov   eax,4	;system call number (sys_write)
+   int   0x80	;call kernel
+	
+   mov   ecx,largest
+   mov   edx, 2
+   mov   ebx,1	;file descriptor (stdout)
+   mov   eax,4	;system call number (sys_write)
+   int   0x80	;call kernel
+    
+   mov   eax, 1
+   int   80h
+
+section	.data
+   
+   msg db "The largest digit is: ", 0xA,0xD 
+   len equ $- msg 
+   num1 dd '47'
+   num2 dd '22'
+   num3 dd '31'
+
+segment .bss
+   largest resb 2  
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">The largest digit is: 
+47
+</pre>
+<h1>Assembly - Loops</h1>
+<p>The JMP instruction can be used for implementing loops. For example, 
+the following code snippet can be used for executing the loop-body 10 
+times.</p>
+<pre class="prettyprint notranslate">MOV	CL, 10
+L1:
+&lt;LOOP-BODY&gt;
+DEC	CL
+JNZ	L1
+</pre>
+<p>The processor instruction set, however, includes a group of loop 
+instructions for implementing iteration. The basic LOOP instruction has 
+the following syntax −</p>
+<pre class="result notranslate">LOOP 	label
+</pre>
+<p>Where, <i>label</i> is the target label that identifies the target instruction as in the jump instructions. The LOOP instruction assumes that the <b>ECX register contains the loop count</b>.
+ When the loop instruction is executed, the ECX register is decremented 
+and the control jumps to the target label, until the ECX register value,
+ i.e., the counter reaches the value zero.</p>
+<p>The above code snippet could be written as −</p>
+<pre class="prettyprint notranslate">mov ECX,10
+l1:
+&lt;loop body&gt;
+loop l1
+</pre>
+<h2>Example</h2>
+<p>The following program prints the number 1 to 9 on the screen −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start        ;must be declared for using gcc
+	
+_start:	                ;tell linker entry point
+   mov ecx,10
+   mov eax, '1'
+	
+l1:
+   mov [num], eax
+   mov eax, 4
+   mov ebx, 1
+   push ecx
+	
+   mov ecx, num        
+   mov edx, 1        
+   int 0x80
+	
+   mov eax, [num]
+   sub eax, '0'
+   inc eax
+   add eax, '0'
+   pop ecx
+   loop l1
+	
+   mov eax,1             ;system call number (sys_exit)
+   int 0x80              ;call kernel
+section	.bss
+num resb 1
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">123456789:
+</pre>
+<h1>Assembly - Numbers</h1>
+<p>Numerical data is generally represented in binary system. Arithmetic 
+instructions operate on binary data. When numbers are displayed on 
+screen or entered from keyboard, they are in ASCII form.</p>
+<p>So far, we have converted this input data in ASCII form to binary for
+ arithmetic calculations and converted the result back to binary. The 
+following code shows this −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start        ;must be declared for using gcc
+	
+_start:	                ;tell linker entry point
+   mov	eax,'3'
+   sub     eax, '0'
+	
+   mov 	ebx, '4'
+   sub     ebx, '0'
+   add 	eax, ebx
+   add	eax, '0'
+	
+   mov 	[sum], eax
+   mov	ecx,msg	
+   mov	edx, len
+   mov	ebx,1	         ;file descriptor (stdout)
+   mov	eax,4	         ;system call number (sys_write)
+   int	0x80	         ;call kernel
+	
+   mov	ecx,sum
+   mov	edx, 1
+   mov	ebx,1	         ;file descriptor (stdout)
+   mov	eax,4	         ;system call number (sys_write)
+   int	0x80	         ;call kernel
+	
+   mov	eax,1	         ;system call number (sys_exit)
+   int	0x80	         ;call kernel
+	
+section .data
+msg db "The sum is:", 0xA,0xD 
+len equ $ - msg   
+segment .bss
+sum resb 1
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">The sum is:
+7
+</pre>
+<p>Such conversions, however, have an overhead, and assembly language 
+programming allows processing numbers in a more efficient way, in the 
+binary form. Decimal numbers can be represented in two forms −</p>
+<ul class="list">
+<li>ASCII form</li>
+<li>BCD or Binary Coded Decimal form</li>
+</ul>
+<h2>ASCII Representation</h2>
+<p>In ASCII representation, decimal numbers are stored as string of 
+ASCII characters. For example, the decimal value 1234 is stored as −</p>
+<pre class="prettyprint notranslate">31	32	33	34H
+</pre>
+<p>Where, 31H is ASCII value for 1, 32H is ASCII value for 2, and so on.
+ There are four instructions for processing numbers in ASCII 
+representation −</p>
+<ul class="list">
+<li><p><b>AAA</b> − ASCII Adjust After Addition</p></li>
+<li><p><b>AAS</b> − ASCII Adjust After Subtraction</p></li>
+<li><p><b>AAM</b> − ASCII Adjust After Multiplication</p></li>
+<li><p><b>AAD</b> − ASCII Adjust Before Division</p></li>
+</ul>
+<p>These instructions do not take any operands and assume the required operand to be in the AL register.</p>
+<p>The following example uses the AAS instruction to demonstrate the concept −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start        ;must be declared for using gcc
+	
+_start:	                ;tell linker entry point
+   sub     ah, ah
+   mov     al, '9'
+   sub     al, '3'
+   aas
+   or      al, 30h
+   mov     [res], ax
+	
+   mov	edx,len	        ;message length
+   mov	ecx,msg	        ;message to write
+   mov	ebx,1	        ;file descriptor (stdout)
+   mov	eax,4	        ;system call number (sys_write)
+   int	0x80	        ;call kernel
+	
+   mov	edx,1	        ;message length
+   mov	ecx,res	        ;message to write
+   mov	ebx,1	        ;file descriptor (stdout)
+   mov	eax,4	        ;system call number (sys_write)
+   int	0x80	        ;call kernel
+	
+   mov	eax,1	        ;system call number (sys_exit)
+   int	0x80	        ;call kernel
+	
+section	.data
+msg db 'The Result is:',0xa	
+len equ $ - msg			
+section .bss
+res resb 1  
+</pre>
+<p>When the above code is compiled and executed, it produces the following result−</p>
+<pre class="result notranslate">The Result is:
+6
+</pre>
+<h2>BCD Representation</h2>
+<p>There are two types of BCD representation −</p>
+<ul class="list">
+<li>Unpacked BCD representation</li>
+<li>Packed BCD representation</li>
+</ul>
+<p>In unpacked BCD representation, each byte stores the binary 
+equivalent of a decimal digit. For example, the number 1234 is stored as
+ −</p>
+<pre class="prettyprint notranslate">01	02	03	04H
+</pre>
+<p>There are two instructions for processing these numbers −</p>
+<ul class="list">
+<li>AAM - ASCII Adjust After Multiplication</li>
+<li>AAD - ASCII Adjust Before Division</li>
+</ul>
+<p>The four ASCII adjust instructions, AAA, AAS, AAM, and AAD, can also 
+be used with unpacked BCD representation. In packed BCD representation, 
+each digit is stored using four bits. Two decimal digits are packed into
+ a byte. For example, the number 1234 is stored as −</p>
+<pre class="prettyprint notranslate">12	34H
+</pre>
+<p>There are two instructions for processing these numbers −</p>
+<ul class="list">
+<li>DAA - Decimal Adjust After Addition</li>
+<li>DAS - decimal Adjust After Subtraction</li>
+</ul>
+<p>There is no support for multiplication and division in packed BCD representation.</p>
+<h2>Example</h2>
+<p>The following program adds up two 5-digit decimal numbers and displays the sum. It uses the above concepts −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start        ;must be declared for using gcc
+
+_start:	                ;tell linker entry point
+
+   mov     esi, 4       ;pointing to the rightmost digit
+   mov     ecx, 5       ;num of digits
+   clc
+add_loop:  
+   mov 	al, [num1 + esi]
+   adc 	al, [num2 + esi]
+   aaa
+   pushf
+   or 	al, 30h
+   popf
+	
+   mov	[sum + esi], al
+   dec	esi
+   loop	add_loop
+	
+   mov	edx,len	        ;message length
+   mov	ecx,msg	        ;message to write
+   mov	ebx,1	        ;file descriptor (stdout)
+   mov	eax,4	        ;system call number (sys_write)
+   int	0x80	        ;call kernel
+	
+   mov	edx,5	        ;message length
+   mov	ecx,sum	        ;message to write
+   mov	ebx,1	        ;file descriptor (stdout)
+   mov	eax,4	        ;system call number (sys_write)
+   int	0x80	        ;call kernel
+	
+   mov	eax,1	        ;system call number (sys_exit)
+   int	0x80	        ;call kernel
+
+section	.data
+msg db 'The Sum is:',0xa	
+len equ $ - msg			
+num1 db '12345'
+num2 db '23456'
+sum db '     '
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">The Sum is:
+35801
+</pre>
+<h1>Assembly - Strings</h1>
+<p>We have already used variable length strings in our previous 
+examples. The variable length strings can have as many characters as 
+required. Generally, we specify the length of the string by either of 
+the two ways −</p>
+<ul class="list">
+<li>Explicitly storing string length</li>
+<li>Using a sentinel character</li>
+</ul>
+<p>We can store the string length explicitly by using the $ location 
+counter symbol that represents the current value of the location 
+counter. In the following example −</p>
+<pre class="prettyprint notranslate">msg  db  'Hello, world!',0xa ;our dear string
+len  equ  $ - msg            ;length of our dear string
+</pre>
+<p>$ points to the byte after the last character of the string variable <i>msg</i>. Therefore, <b><i>$-msg</i></b> gives the length of the string. We can also write</p>
+<pre class="prettyprint notranslate">msg db 'Hello, world!',0xa ;our dear string
+len equ 13                 ;length of our dear string
+</pre>
+<p>Alternatively, you can store strings with a trailing sentinel 
+character to delimit a string instead of storing the string length 
+explicitly. The sentinel character should be a special character that 
+does not appear within a string.</p>
+<p>For example −</p>
+<pre class="prettyprint notranslate">message DB 'I am loving it!', 0
+</pre>
+<h2>String Instructions</h2>
+<p>Each string instruction may require a source operand, a destination 
+operand or both. For 32-bit segments, string instructions use ESI and 
+EDI registers to point to the source and destination operands, 
+respectively.</p>
+<p>For 16-bit segments, however, the SI and the DI registers are used to point to the source and destination, respectively.</p>
+<p>There are five basic instructions for processing strings. They are −</p>
+<ul class="list">
+<li><p><b>MOVS</b> − This instruction moves 1 Byte, Word or Doubleword of data from memory location to another.</p></li>
+<li><p><b>LODS</b> − This instruction loads from memory. If the operand 
+is of one byte, it is loaded into the AL register, if the operand is one
+ word, it is loaded into the AX register and a doubleword is loaded into
+ the EAX register.</p></li>
+<li><p><b>STOS</b> − This instruction stores data from register (AL, AX, or EAX) to memory.</p></li>
+<li><p><b>CMPS</b> − This instruction compares two data items in memory. Data could be of a byte size, word or doubleword.</p></li>
+<li><p><b>SCAS</b> − This instruction compares the contents of a register (AL, AX or EAX) with the contents of an item in memory.</p></li>
+</ul>
+<p>Each of the above instruction has a byte, word, and doubleword 
+version, and string instructions can be repeated by using a repetition 
+prefix.</p>
+<p>These instructions use the ES:DI and DS:SI pair of registers, where 
+DI and SI registers contain valid offset addresses that refers to bytes 
+stored in memory. SI is normally associated with DS (data segment) and 
+DI is always associated with ES (extra segment).</p>
+<p>The DS:SI (or ESI) and ES:DI (or EDI) registers point to the source 
+and destination operands, respectively. The source operand is assumed to
+ be at DS:SI (or ESI) and the destination operand at ES:DI (or EDI) in 
+memory.</p>
+<p>For 16-bit addresses, the SI and DI registers are used, and for 32-bit addresses, the ESI and EDI registers are used.</p>
+<p>The following table provides various versions of string instructions and the assumed space of the operands.</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width:25%;">Basic Instruction</th>
+<th style="width:20%;">Operands at</th>
+<th style="width:23%;">Byte Operation</th>
+<th style="width:23%;">Word Operation</th>
+<th>Double word Operation</th>
+</tr>
+<tr>
+<td><p><a href="https://www.tutorialspoint.com/assembly_programming/assembly_movs_instruction.htm">MOVS</a></p></td>
+<td>ES:DI, DS:EI</td>
+<td>MOVSB</td>
+<td>MOVSW</td>
+<td>MOVSD</td>
+</tr>
+<tr>
+<td><p><a href="https://www.tutorialspoint.com/assembly_programming/assembly_lods_instruction.htm">LODS</a></p></td>
+<td>AX, DS:SI</td>
+<td>LODSB</td>
+<td>LODSW</td>
+<td>LODSD</td>
+</tr>
+<tr>
+<td><p><a href="https://www.tutorialspoint.com/assembly_programming/assembly_stos_instruction.htm">STOS</a></p></td>
+<td>ES:DI, AX</td>
+<td>STOSB</td>
+<td>STOSW</td>
+<td>STOSD</td>
+</tr>
+<tr>
+<td><p><a href="https://www.tutorialspoint.com/assembly_programming/assembly_cmps_instruction.htm">CMPS</a></p></td>
+<td>DS:SI, ES: DI</td>
+<td>CMPSB</td>
+<td>CMPSW</td>
+<td>CMPSD</td>
+</tr>
+<tr>
+<td><p><a href="https://www.tutorialspoint.com/assembly_programming/assembly_scas_instruction.htm">SCAS</a></p></td>
+<td>ES:DI, AX</td>
+<td>SCASB</td>
+<td>SCASW</td>
+<td>SCASD</td>
+</tr>
+</tbody></table>
+<h2>Repetition Prefixes</h2>
+<p>The REP prefix, when set before a string instruction, for example - 
+REP MOVSB, causes repetition of the instruction based on a counter 
+placed at the CX register. REP executes the instruction, decreases CX by
+ 1, and checks whether CX is zero. It repeats the instruction processing
+ until CX is zero.</p>
+<p>The Direction Flag (DF) determines the direction of the operation.</p>
+<ul class="list">
+<li>Use CLD (Clear Direction Flag, DF = 0) to make the operation left to right.</li>
+<li>Use STD (Set Direction Flag, DF = 1) to make the operation right to left.</li>
+</ul>
+<p>The REP prefix also has the following variations:</p>
+<ul class="list">
+<li><p>REP: It is the unconditional repeat. It repeats the operation until CX is zero.</p></li>
+<li><p>REPE or REPZ: It is conditional repeat. It repeats the operation 
+while the zero flag indicates equal/zero. It stops when the ZF indicates
+ not equal/zero or when CX is zero.</p></li>
+<li><p>REPNE or REPNZ: It is also conditional repeat. It repeats the 
+operation while the zero flag indicates not equal/zero. It stops when 
+the ZF indicates equal/zero or when CX is decremented to zero.</p></li>
+</ul>
+<h1>Assembly - Arrays</h1>
+<p>We have already discussed that the data definition directives to the 
+assembler are used for allocating storage for variables. The variable 
+could also be initialized with some specific value. The initialized 
+value could be specified in hexadecimal, decimal or binary form.</p>
+<p>For example, we can define a word variable 'months' in either of the following way −</p>
+<pre class="prettyprint notranslate">MONTHS	DW	12
+MONTHS	DW	0CH
+MONTHS	DW	0110B
+</pre>
+<p>The data definition directives can also be used for defining a 
+one-dimensional array. Let us define a one-dimensional array of numbers.</p>
+<pre class="prettyprint notranslate">NUMBERS	DW  34,  45,  56,  67,  75, 89
+</pre>
+<p>The above definition declares an array of six words each initialized 
+with the numbers 34, 45, 56, 67, 75, 89. This allocates 2x6 = 12 bytes 
+of consecutive memory space. The symbolic address of the first number 
+will be NUMBERS and that of the second number will be NUMBERS + 2 and so
+ on.</p>
+<p>Let us take up another example. You can define an array named inventory of size 8, and initialize all the values with zero, as −</p>
+<pre class="prettyprint notranslate">INVENTORY   DW  0
+            DW  0
+            DW  0
+            DW  0
+            DW  0
+            DW  0
+            DW  0
+            DW  0
+</pre>
+<p>Which can be abbreviated as −</p>
+<pre class="prettyprint notranslate">INVENTORY   DW  0, 0 , 0 , 0 , 0 , 0 , 0 , 0
+</pre>
+<p>The TIMES directive can also be used for multiple initializations to 
+the same value. Using TIMES, the INVENTORY array can be defined as:</p>
+<pre class="prettyprint notranslate">INVENTORY TIMES 8 DW 0
+</pre>
+<h2>Example</h2>
+<p>The following example demonstrates the above concepts by defining a 
+3-element array x, which stores three values: 2, 3 and 4. It adds the 
+values in the array and displays the sum 9 −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start   ;must be declared for linker (ld)
+	
+_start:	
+ 		
+   mov  eax,3      ;number bytes to be summed 
+   mov  ebx,0      ;EBX will store the sum
+   mov  ecx, x     ;ECX will point to the current element to be summed
+
+top:  add  ebx, [ecx]
+
+   add  ecx,1      ;move pointer to next element
+   dec  eax        ;decrement counter
+   jnz  top        ;if counter not 0, then loop again
+
+done: 
+
+   add   ebx, '0'
+   mov  [sum], ebx ;done, store result in "sum"
+
+display:
+
+   mov  edx,1      ;message length
+   mov  ecx, sum   ;message to write
+   mov  ebx, 1     ;file descriptor (stdout)
+   mov  eax, 4     ;system call number (sys_write)
+   int  0x80       ;call kernel
+	
+   mov  eax, 1     ;system call number (sys_exit)
+   int  0x80       ;call kernel
+
+section	.data
+global x
+x:    
+   db  2
+   db  4
+   db  3
+
+sum: 
+   db  0
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">9
+</pre>
+<h1>Assembly - Procedures</h1>
+<p>Procedures or subroutines are very important in assembly language, as
+ the assembly language programs tend to be large in size. Procedures are
+ identified by a name. Following this name, the body of the procedure is
+ described which performs a well-defined job. End of the procedure is 
+indicated by a return statement.</p>
+<h2>Syntax</h2>
+<p>Following is the syntax to define a procedure −</p>
+<pre class="prettyprint notranslate">proc_name:
+   procedure body
+   ...
+   ret
+</pre>
+<p>The procedure is called from another function by using the CALL 
+instruction. The CALL instruction should have the name of the called 
+procedure as an argument as shown below −</p>
+<pre class="result notranslate">CALL proc_name
+</pre>
+<p>The called procedure returns the control to the calling procedure by using the RET instruction.</p>
+<h2>Example</h2>
+<p>Let us write a very simple procedure named <i>sum</i> that adds the variables stored in the ECX and EDX register and returns the sum in the EAX register −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start        ;must be declared for using gcc
+	
+_start:	                ;tell linker entry point
+   mov	ecx,'4'
+   sub     ecx, '0'
+	
+   mov 	edx, '5'
+   sub     edx, '0'
+	
+   call    sum          ;call sum procedure
+   mov 	[res], eax
+   mov	ecx, msg	
+   mov	edx, len
+   mov	ebx,1	        ;file descriptor (stdout)
+   mov	eax,4	        ;system call number (sys_write)
+   int	0x80	        ;call kernel
+	
+   mov	ecx, res
+   mov	edx, 1
+   mov	ebx, 1	        ;file descriptor (stdout)
+   mov	eax, 4	        ;system call number (sys_write)
+   int	0x80	        ;call kernel
+	
+   mov	eax,1	        ;system call number (sys_exit)
+   int	0x80	        ;call kernel
+sum:
+   mov     eax, ecx
+   add     eax, edx
+   add     eax, '0'
+   ret
+	
+section .data
+msg db "The sum is:", 0xA,0xD 
+len equ $- msg   
+
+segment .bss
+res resb 1
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">The sum is:
+9
+</pre>
+<h2>Stacks Data Structure</h2>
+<p>A stack is an array-like data structure in the memory in which data 
+can be stored and removed from a location called the 'top' of the stack.
+ The data that needs to be stored is 'pushed' into the stack and data to
+ be retrieved is 'popped' out from the stack. Stack is a LIFO data 
+structure, i.e., the data stored first is retrieved last.</p>
+<p>Assembly language provides two instructions for stack operations: PUSH and POP. These instructions have syntaxes like −</p>
+<pre class="result notranslate">PUSH    operand
+POP     address/register
+</pre>
+<p>The memory space reserved in the stack segment is used for 
+implementing stack. The registers SS and ESP (or SP) are used for 
+implementing the stack. The top of the stack, which points to the last 
+data item inserted into the stack is pointed to by the SS:ESP register, 
+where the SS register points to the beginning of the stack segment and 
+the SP (or ESP) gives the offset into the stack segment.</p>
+<p>The stack implementation has the following characteristics −</p>
+<ul class="list">
+<li><p>Only <b>words</b> or <b>doublewords</b> could be saved into the stack, not a byte.</p></li>
+<li><p>The stack grows in the reverse direction, i.e., toward the lower memory address</p></li>
+<li><p>The top of the stack points to the last item inserted in the stack; it points to the lower byte of the last word inserted.</p></li>
+</ul>
+<p>As we discussed about storing the values of the registers in the 
+stack before using them for some use; it can be done in following way −</p>
+<pre class="prettyprint notranslate">; Save the AX and BX registers in the stack
+PUSH    AX
+PUSH    BX
+
+; Use the registers for other purpose
+MOV	AX, VALUE1
+MOV 	BX, VALUE2
+...
+MOV 	VALUE1, AX
+MOV	VALUE2, BX
+
+; Restore the original values
+POP	AX
+POP	BX
+</pre>
+<h3>Example</h3>
+<p>The following program displays the entire ASCII character set. The main program calls a procedure named <i>display</i>, which displays the ASCII character set.</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start        ;must be declared for using gcc
+	
+_start:	                ;tell linker entry point
+   call    display
+   mov	eax,1	        ;system call number (sys_exit)
+   int	0x80	        ;call kernel
+	
+display:
+   mov    ecx, 256
+	
+next:
+   push    ecx
+   mov     eax, 4
+   mov     ebx, 1
+   mov     ecx, achar
+   mov     edx, 1
+   int     80h
+	
+   pop     ecx	
+   mov	dx, [achar]
+   cmp	byte [achar], 0dh
+   inc	byte [achar]
+   loop    next
+   ret
+	
+section .data
+achar db '0'  
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}
+...
+...
+</pre>
+<h1>Assembly - Recursion</h1>
+<p>A recursive procedure is one that calls itself. There are two kind of
+ recursion: direct and indirect. In direct recursion, the procedure 
+calls itself and in indirect recursion, the first procedure calls a 
+second procedure, which in turn calls the first procedure.</p>
+<p>Recursion could be observed in numerous mathematical algorithms. For 
+example, consider the case of calculating the factorial of a number. 
+Factorial of a number is given by the equation −</p>
+<pre class="prettyprint notranslate">Fact (n) = n * fact (n-1) for n &gt; 0
+</pre>
+<p>For example: factorial of 5 is 1 x 2 x 3 x 4 x 5 = 5 x factorial of 4
+ and this can be a good example of showing a recursive procedure. Every 
+recursive algorithm must have an ending condition, i.e., the recursive 
+calling of the program should be stopped when a condition is fulfilled. 
+In the case of factorial algorithm, the end condition is reached when n 
+is 0.</p>
+<p>The following program shows how factorial n is implemented in 
+assembly language. To keep the program simple, we will calculate 
+factorial 3.</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start         ;must be declared for using gcc
+	
+_start:                  ;tell linker entry point
+
+   mov bx, 3             ;for calculating factorial 3
+   call  proc_fact
+   add   ax, 30h
+   mov  [fact], ax
+    
+   mov	  edx,len        ;message length
+   mov	  ecx,msg        ;message to write
+   mov	  ebx,1          ;file descriptor (stdout)
+   mov	  eax,4          ;system call number (sys_write)
+   int	  0x80           ;call kernel
+
+   mov   edx,1            ;message length
+   mov	  ecx,fact       ;message to write
+   mov	  ebx,1          ;file descriptor (stdout)
+   mov	  eax,4          ;system call number (sys_write)
+   int	  0x80           ;call kernel
+    
+   mov	  eax,1          ;system call number (sys_exit)
+   int	  0x80           ;call kernel
+	
+proc_fact:
+   cmp   bl, 1
+   jg    do_calculation
+   mov   ax, 1
+   ret
+	
+do_calculation:
+   dec   bl
+   call  proc_fact
+   inc   bl
+   mul   bl        ;ax = al * bl
+   ret
+
+section	.data
+msg db 'Factorial 3 is:',0xa	
+len equ $ - msg			
+
+section .bss
+fact resb 1
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Factorial 3 is:
+6
+</pre>
+<h1>Assembly - Macros</h1>
+<p>Writing a macro is another way of ensuring modular programming in assembly language.</p>
+<ul class="list">
+<li><p>A macro is a sequence of instructions, assigned by a name and could be used anywhere in the program.</p></li>
+<li><p>In NASM, macros are defined with <b>%macro</b> and <b>%endmacro</b> directives.</p></li>
+<li><p>The macro begins with the %macro directive and ends with the %endmacro directive.</p></li>
+</ul>
+<p>The Syntax for macro definition −</p>
+<pre class="result notranslate">%macro macro_name  number_of_params
+&lt;macro body&gt;
+%endmacro
+</pre>
+<p>Where, <i>number_of_params</i> specifies the number parameters, <i>macro_name</i> specifies the name of the macro.</p>
+<p>The macro is invoked by using the macro name along with the necessary
+ parameters. When you need to use some sequence of instructions many 
+times in a program, you can put those instructions in a macro and use it
+ instead of writing the instructions all the time.</p> 
+<p>For example, a very common need for programs is to write a string of 
+characters in the screen. For displaying a string of characters, you 
+need the following sequence of instructions −</p>
+<pre class="prettyprint notranslate">mov	edx,len	    ;message length
+mov	ecx,msg	    ;message to write
+mov	ebx,1       ;file descriptor (stdout)
+mov	eax,4       ;system call number (sys_write)
+int	0x80        ;call kernel
+</pre>
+<p>In the above example of displaying a character string, the registers 
+EAX, EBX, ECX and EDX have been used by the INT 80H function call. So, 
+each time you need to display on screen, you need to save these 
+registers on the stack, invoke INT 80H and then restore the original 
+value of the registers from the stack. So, it could be useful to write 
+two macros for saving and restoring data.</p>
+<p>We have observed that, some instructions like IMUL, IDIV, INT, etc., 
+need some of the information to be stored in some particular registers 
+and even return values in some specific register(s). If the program was 
+already using those registers for keeping important data, then the 
+existing data from these registers should be saved in the stack and 
+restored after the instruction is executed.</p>
+<h2>Example</h2>
+<p>Following example shows defining and using macros −</p>
+<pre class="prettyprint notranslate tryit">; A macro with two parameters
+; Implements the write system call
+   %macro write_string 2 
+      mov   eax, 4
+      mov   ebx, 1
+      mov   ecx, %1
+      mov   edx, %2
+      int   80h
+   %endmacro
+ 
+section	.text
+   global _start            ;must be declared for using gcc
+	
+_start:                     ;tell linker entry point
+   write_string msg1, len1               
+   write_string msg2, len2    
+   write_string msg3, len3  
+	
+   mov eax,1                ;system call number (sys_exit)
+   int 0x80                 ;call kernel
+
+section	.data
+msg1 db	'Hello, programmers!',0xA,0xD 	
+len1 equ $ - msg1			
+
+msg2 db 'Welcome to the world of,', 0xA,0xD 
+len2 equ $- msg2 
+
+msg3 db 'Linux assembly programming! '
+len3 equ $- msg3
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Hello, programmers!
+Welcome to the world of,
+Linux assembly programming!
+</pre>
+<h1>Assembly - File Management</h1>
+<p>The system considers any input or output data as stream of bytes. There are three standard file streams −</p>
+<ul class="list">
+<li>Standard input (stdin),</li>
+<li>Standard output (stdout), and</li>
+<li>Standard error (stderr).</li>
+</ul>
+<h2>File Descriptor</h2>
+<p>A <b>file descriptor</b> is a 16-bit integer assigned to a file as a 
+file id. When a new file is created or an existing file is opened, the 
+file descriptor is used for accessing the file.</p>
+<p>File descriptor of the standard file streams - <b>stdin, stdout</b> and <b>stderr</b> are 0, 1 and 2, respectively.</p>
+<h2>File Pointer</h2>
+<p>A <b>file pointer</b> specifies the location for a subsequent 
+read/write operation in the file in terms of bytes. Each file is 
+considered as a sequence of bytes. Each open file is associated with a 
+file pointer that specifies an offset in bytes, relative to the 
+beginning of the file. When a file is opened, the file pointer is set to
+ zero.</p>
+<h2>File Handling System Calls</h2>
+<p>The following table briefly describes the system calls related to file handling −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th>%eax</th>
+<th>Name</th>
+<th>%ebx</th>
+<th>%ecx</th>
+<th>%edx</th>
+</tr>
+<tr>
+<td>2</td>
+<td>sys_fork</td>
+<td>struct pt_regs</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>sys_read</td>
+<td>unsigned int</td>
+<td>char *</td>
+<td>size_t</td>
+</tr>
+<tr>
+<td>4</td>
+<td>sys_write</td>
+<td>unsigned int</td>
+<td>const char *</td>
+<td>size_t</td>
+</tr>
+<tr>
+<td>5</td>
+<td>sys_open</td>
+<td>const char *</td>
+<td>int</td>
+<td>int</td>
+</tr>
+<tr>
+<td>6</td>
+<td>sys_close</td>
+<td>unsigned int</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>8</td>
+<td>sys_creat</td>
+<td>const char *</td>
+<td>int</td>
+<td>-</td>
+</tr>
+<tr>
+<td>19</td>
+<td>sys_lseek</td>
+<td>unsigned int</td>
+<td>off_t</td>
+<td>unsigned int</td>
+</tr>
+</tbody></table>
+<p>The steps required for using the system calls are same, as we discussed earlier −</p>
+<ul class="list">
+<li>Put the system call number in the EAX register.</li>
+<li>Store the arguments to the system call in the registers EBX, ECX, etc.</li>
+<li>Call the relevant interrupt (80h).</li>
+<li>The result is usually returned in the EAX register.</li>
+</ul>
+<h2>Creating and Opening a File</h2>
+<p>For creating and opening a file, perform the following tasks −</p>
+<ul class="list">
+<li>Put the system call sys_creat() number 8, in the EAX register.</li>
+<li>Put the filename in the EBX register.</li>
+<li>Put the file permissions in the ECX register.</li>
+</ul>
+<p>The system call returns the file descriptor of the created file in 
+the EAX register, in case of error, the error code is in the EAX 
+register.</p>
+<h2>Opening an Existing File</h2>
+<p>For opening an existing file, perform the following tasks −</p>
+<ul class="list">
+<li>Put the system call sys_open() number 5, in the EAX register.</li>
+<li>Put the filename in the EBX register.</li>
+<li>Put the file access mode in the ECX register.</li>
+<li>Put the file permissions in the EDX register.</li>
+</ul>
+<p>The system call returns the file descriptor of the created file in 
+the EAX register, in case of error, the error code is in the EAX 
+register.</p>
+<p>Among the file access modes, most commonly used are: read-only (0), write-only (1), and read-write (2).</p>
+<h2>Reading from a File</h2>
+<p>For reading from a file, perform the following tasks −</p>
+<ul class="list">
+<li><p>Put the system call sys_read() number 3, in the EAX register.</p></li>
+<li><p>Put the file descriptor in the EBX register.</p></li>
+<li><p>Put the pointer to the input buffer in the ECX register.</p></li>
+<li><p>Put the buffer size, i.e., the number of bytes to read, in the EDX register.</p></li>
+</ul>
+<p>The system call returns the number of bytes read in the EAX register, in case of error, the error code is in the EAX register.</p>
+<h2>Writing to a File</h2>
+<p>For writing to a file, perform the following tasks −</p>
+<ul class="list">
+<li><p>Put the system call sys_write() number 4, in the EAX register.</p></li>
+<li><p>Put the file descriptor in the EBX register.</p></li>
+<li><p>Put the pointer to the output buffer in the ECX register.</p></li>
+<li><p>Put the buffer size, i.e., the number of bytes to write, in the EDX register.</p></li>
+</ul>
+<p>The system call returns the actual number of bytes written in the EAX
+ register, in case of error, the error code is in the EAX register.</p>
+<h2>Closing a File</h2>
+<p>For closing a file, perform the following tasks −</p>
+<ul class="list">
+<li>Put the system call sys_close() number 6, in the EAX register.</li>
+<li>Put the file descriptor in the EBX register.</li>
+</ul>
+<p>The system call returns, in case of error, the error code in the EAX register.</p>
+<h2>Updating a File</h2>
+<p>For updating a file, perform the following tasks −</p>
+<ul class="list">
+<li>Put the system call sys_lseek () number 19, in the EAX register.</li>
+<li>Put the file descriptor in the EBX register.</li>
+<li>Put the offset value in the ECX register.</li>
+<li>Put the reference position for the offset in the EDX register.</li>
+</ul>
+<p>The reference position could be:</p>
+<ul class="list">
+<li>Beginning of file -  value 0</li>
+<li>Current position - value 1</li>
+<li>End of file - value 2</li>
+</ul>
+<p>The system call returns, in case of error, the error code in the EAX register.</p>
+<h2>Example</h2>
+<p>The following program creates and opens a file named <i>myfile.txt</i>,
+ and writes a text 'Welcome to Tutorials Point' in this file. Next, the 
+program reads from the file and stores the data into a buffer named <i>info</i>. Lastly, it displays the text as stored in <i>info</i>.</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start         ;must be declared for using gcc
+	
+_start:                  ;tell linker entry point
+   ;create the file
+   mov  eax, 8
+   mov  ebx, file_name
+   mov  ecx, 0777        ;read, write and execute by all
+   int  0x80             ;call kernel
+	
+   mov [fd_out], eax
+    
+   ; write into the file
+   mov	edx,len          ;number of bytes
+   mov	ecx, msg         ;message to write
+   mov	ebx, [fd_out]    ;file descriptor 
+   mov	eax,4            ;system call number (sys_write)
+   int	0x80             ;call kernel
+	
+   ; close the file
+   mov eax, 6
+   mov ebx, [fd_out]
+    
+   ; write the message indicating end of file write
+   mov eax, 4
+   mov ebx, 1
+   mov ecx, msg_done
+   mov edx, len_done
+   int  0x80
+    
+   ;open the file for reading
+   mov eax, 5
+   mov ebx, file_name
+   mov ecx, 0             ;for read only access
+   mov edx, 0777          ;read, write and execute by all
+   int  0x80
+	
+   mov  [fd_in], eax
+    
+   ;read from file
+   mov eax, 3
+   mov ebx, [fd_in]
+   mov ecx, info
+   mov edx, 26
+   int 0x80
+    
+   ; close the file
+   mov eax, 6
+   mov ebx, [fd_in]
+    
+   ; print the info 
+   mov eax, 4
+   mov ebx, 1
+   mov ecx, info
+   mov edx, 26
+   int 0x80
+       
+   mov	eax,1             ;system call number (sys_exit)
+   int	0x80              ;call kernel
+
+section	.data
+file_name db 'myfile.txt'
+msg db 'Welcome to Tutorials Point'
+len equ  $-msg
+
+msg_done db 'Written to file', 0xa
+len_done equ $-msg_done
+
+section .bss
+fd_out resb 1
+fd_in  resb 1
+info resb  26
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Written to file
+Welcome to Tutorials Point
+</pre>
+<h1>Assembly - Memory Management</h1>
+<p>The <b>sys_brk()</b> system call is provided by the kernel, to 
+allocate memory without the need of moving it later. This call allocates
+ memory right behind the application image in the memory. This system 
+function allows you to set the highest available address in the data 
+section.</p>
+<p>This system call takes one parameter, which is the highest memory 
+address needed to be set. This value is stored in the EBX register.</p>
+<p>In case of any error, sys_brk() returns -1 or returns the negative 
+error code itself. The following example demonstrates dynamic memory 
+allocation.</p>
+<h2>Example</h2>
+<p>The following program allocates 16kb of memory using the sys_brk() system call −</p>
+<pre class="prettyprint notranslate tryit">section	.text
+   global _start         ;must be declared for using gcc
+	
+_start:	                 ;tell linker entry point
+
+   mov	eax, 45		 ;sys_brk
+   xor	ebx, ebx
+   int	80h
+
+   add	eax, 16384	 ;number of bytes to be reserved
+   mov	ebx, eax
+   mov	eax, 45		 ;sys_brk
+   int	80h
+	
+   cmp	eax, 0
+   jl	exit	;exit, if error 
+   mov	edi, eax	 ;EDI = highest available address
+   sub	edi, 4		 ;pointing to the last DWORD  
+   mov	ecx, 4096	 ;number of DWORDs allocated
+   xor	eax, eax	 ;clear eax
+   std			 ;backward
+   rep	stosd            ;repete for entire allocated area
+   cld			 ;put DF flag to normal state
+	
+   mov	eax, 4
+   mov	ebx, 1
+   mov	ecx, msg
+   mov	edx, len
+   int	80h		 ;print a message
+
+exit:
+   mov	eax, 1
+   xor	ebx, ebx
+   int	80h
+	
+section	.data
+msg    	db	"Allocated 16 kb of memory!", 10
+len     equ	$ - msg
+</pre>
+<p>When the above code is compiled and executed, it produces the following result −</p>
+<pre class="result notranslate">Allocated 16 kb of memory!
+</pre>
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/assembly_memory_management.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="https://www.tutorialspoint.com/cgi-bin/printpage.cgi" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="pdf-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/pdf/assembly_quick_guide.pdf" title="Assembly Quick Guide" target="_blank"><i class="icon icon-file-pdf-o big-font"></i> PDF</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/assembly_programming/assembly_useful_resources.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr>
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+<script type="text/javascript"><!--
+var width = 580;
+var height = 400;
+var format = "580x400_as";
+if( window.innerWidth < 468 ){
+   width = 300;
+   height = 250;
+   format = "300x250_as";
+}
+google_ad_client = "pub-7133395778201029";
+google_ad_width = width;
+google_ad_height = height;
+google_ad_format = format;
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="Assembly%20Quick%20Guide_files/show_ads.js">
+</script><ins id="aswift_1_expand" style="display:inline-table;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:580px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:400px;margin:0;padding:0;position:relative;visibility:visible;width:580px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" width="580" height="400" frameborder="0"></iframe></ins></ins>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="simple-ad">
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.facebook.com/sharer.php?u=' + 'http://www.tutorialspoint.com/assembly_programming/assembly_quick_guide.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Quick%20Guide_files/facebookIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://twitter.com/share?url=' + 'http://www.tutorialspoint.com/assembly_programming/assembly_quick_guide.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Quick%20Guide_files/twitterIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.linkedin.com/cws/share?url=' + 'http://www.tutorialspoint.com/assembly_programming/assembly_quick_guide.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Quick%20Guide_files/linkedinIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://plus.google.com/share?url=http://www.tutorialspoint.com/assembly_programming/assembly_quick_guide.htm','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Quick%20Guide_files/googlePlusIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.stumbleupon.com/submit?url=http://www.tutorialspoint.com/assembly_programming/assembly_quick_guide.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Quick%20Guide_files/StumbleUponIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://reddit.com/submit?url=http://www.tutorialspoint.com/assembly_programming/assembly_quick_guide.htm&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=656,top='+sTop+',left='+sLeft);return false;">
+<img src="Assembly%20Quick%20Guide_files/reddit.jpg" alt="img">
+</a>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="Assembly%20Quick%20Guide_files/show_ads.js">
+</script><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;" width="300" height="250" frameborder="0"></iframe></ins></ins>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 600;
+google_ad_format = "300x600_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript" src="Assembly%20Quick%20Guide_files/show_ads.js">
+</script><ins id="aswift_3_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_3_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;" width="300" height="600" frameborder="0"></iframe></ins></ins>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2537027957187252";
+/* Right Side Ad */
+google_ad_slot = "right_side_ad";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="Assembly%20Quick%20Guide_files/show_ads.js">
+</script><ins id="aswift_4_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><ins id="aswift_4_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_4" name="aswift_4" style="left:0;position:absolute;top:0;" width="300" height="250" frameborder="0"></iframe></ins></ins>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="https://www.tutorialspoint.com/index.htm" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="Assembly%20Quick%20Guide_files/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="https://www.tutorialspoint.com/about/tutorials_writing.htm">Write for us</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/faq.htm">FAQ's</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/about_helping.htm">Helping</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/contact_us.htm">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>© Copyright 2016. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == 'Enter email for newsletter...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter email for newsletter...';}" type="text">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<script type="text/javascript" src="Assembly%20Quick%20Guide_files/custom-min.js"></script><a class="scroll-to-top" href="#" id="scrollToTop"><i class="icon icon-chevron-up icon-white"></i></a>
+<script src="Assembly%20Quick%20Guide_files/urchin.js">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+<script type="text/javascript" src="Assembly%20Quick%20Guide_files/jquery.js"></script>
+<script type="text/javascript">
+   var tryit = new $.TryIt('assembly_programming/try_asm.php');
+   tryit.compile();
+</script><div id="source" style="display:none;"></div><div id="supportsource" style="display:none;"></div><div id="utilsource" style="display:none;"></div><div id="extrasource" style="display:none;"></div><div id="inputs" style="display:none;"></div><div id="filename" style="display:none;"></div>
+
+
+<div class="autocomplete-suggestions "></div><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div></body></html>
